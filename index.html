@@ -136,6 +136,29 @@ a{color:inherit;text-decoration:none}
 .devis-btn:hover{background:var(--accent-deep)}
 @media(max-width:560px){.devis-phone{display:none}.devis{justify-content:stretch}.devis-btn{flex:1;justify-content:center}}
 
+/* ---- MENU OVERLAY (style ELUXFRANCE : clair, aligné à gauche) ---- */
+.menu-overlay{position:fixed;inset:0;z-index:95;background:var(--paper);
+  display:flex;flex-direction:column;overflow-y:auto;
+  opacity:0;visibility:hidden;transition:opacity .4s var(--ease),visibility .4s}
+.menu-overlay.open{opacity:1;visibility:visible}
+.menu-head{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+  padding:1.5rem clamp(1.25rem,4vw,3.5rem);border-bottom:1px solid var(--line)}
+.menu-logo{justify-self:center;font-family:var(--sans);font-weight:400;letter-spacing:.42em;font-size:1.05rem;padding-left:.42em;color:var(--ink)}
+.menu-logo .star{color:var(--accent)}
+.menu-close{justify-self:start;width:30px;height:30px;cursor:pointer;background:none;border:none;padding:0}
+.menu-close svg{width:100%;height:100%;stroke:var(--accent);stroke-width:1.3;fill:none}
+.menu-srch{justify-self:end;width:30px;height:30px;cursor:pointer;background:none;border:none;padding:0}
+.menu-srch svg{width:22px;height:22px;stroke:var(--ink);stroke-width:1.3;fill:none}
+.menu-body{padding:.5rem clamp(1.25rem,4vw,3.5rem) 3rem;display:flex;flex-direction:column;max-width:var(--maxw);width:100%}
+.menu-primary{display:flex;flex-direction:column;gap:1.25rem;padding:1.8rem 0}
+.menu-primary a{font-family:var(--serif);font-weight:300;font-size:clamp(1.9rem,7vw,2.5rem);line-height:1.1;color:var(--ink);transition:color .3s}
+.menu-secondary{display:flex;flex-direction:column;gap:1.1rem;padding:1.8rem 0;border-top:1px solid var(--line)}
+.menu-secondary a{font-family:var(--sans);font-weight:300;font-size:1.05rem;color:var(--ink);transition:color .3s}
+.menu-lang{padding-top:1.8rem;border-top:1px solid var(--line)}
+.menu-lang a{font-family:var(--sans);font-weight:400;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+  text-decoration:underline;text-underline-offset:5px;color:var(--ink)}
+.menu-overlay a:hover{color:var(--accent)}
+
 /* reveal */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .reveal.in{opacity:1;transform:none}
@@ -185,28 +208,28 @@ a{color:inherit;text-decoration:none}
   <div class="hero-bg"><img src="assets/hero1.jpg" alt="France"></div>
   <div class="hero-inner">
     <h1>France</h1>
-    <form class="hero-search" onsubmit="return false">
+    <form class="hero-search" id="heroForm" onsubmit="document.getElementById('inspirations').scrollIntoView({behavior:'smooth'});return false">
       <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg>
-      <input type="text" placeholder="Rechercher une expérience">
+      <input type="text" id="heroSearch" placeholder="Rechercher une expérience">
     </form>
   </div>
 
   <nav class="nav" id="nav">
     <div class="nav-left util">
-      <a href="#"><svg class="ic" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>Menu</a>
-      <a href="#" class="lbl-search"><svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>Rechercher</a>
+      <a href="#" id="btnMenu"><svg class="ic" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>Menu</a>
+      <a href="#" id="btnSearch" class="lbl-search"><svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>Rechercher</a>
     </div>
     <a href="index.html" class="nav-logo">KTS<span class="star">✦</span><b>TRAVEL</b></a>
     <div class="nav-right util">
       <a href="#contact" class="lbl-contact">Contactez-nous</a>
-      <a href="#">FR</a>
+      <a href="#" id="langFr">FR</a>
     </div>
   </nav>
 </header>
 
 <main>
   <!-- SERVICES / staggered editorial -->
-  <section class="services">
+  <section class="services" id="services">
     <div class="wrap">
       <div class="head reveal">
         <span class="eyebrow">La France sur mesure</span>
@@ -241,21 +264,21 @@ a{color:inherit;text-decoration:none}
   <!-- REGION BAR -->
   <nav class="regions">
     <div class="wrap">
-      <a href="#">Paris &amp; sa région</a>
-      <a href="#">Provence</a>
-      <a href="#">Côte d'Azur</a>
-      <a href="#">Champagne</a>
-      <a href="#">Val de Loire</a>
-      <a href="#">Normandie</a>
-      <a href="#">Bretagne</a>
-      <a href="#">Bourgogne</a>
-      <a href="#">Alpes</a>
-      <a href="#">Sud-Ouest</a>
+      <a href="#inspirations">Paris &amp; sa région</a>
+      <a href="#inspirations">Provence</a>
+      <a href="#inspirations">Côte d'Azur</a>
+      <a href="#inspirations">Champagne</a>
+      <a href="#inspirations">Val de Loire</a>
+      <a href="#inspirations">Normandie</a>
+      <a href="#inspirations">Bretagne</a>
+      <a href="#inspirations">Bourgogne</a>
+      <a href="#inspirations">Alpes</a>
+      <a href="#inspirations">Sud-Ouest</a>
     </div>
   </nav>
 
   <!-- INSPIRATIONS -->
-  <section class="insp">
+  <section class="insp" id="inspirations">
     <div class="wrap">
       <div class="insp-head reveal">
         <span class="eyebrow">Inspirations</span>
@@ -289,7 +312,7 @@ a{color:inherit;text-decoration:none}
     <div class="footer-top">
       <a href="index.html" class="footer-logo">KTS<span class="star">✦</span>TRAVEL</a>
       <div class="footer-links">
-        <a href="#">Paris</a><a href="#">Provence</a><a href="#">Côte d'Azur</a><a href="#">Champagne</a><a href="#">La Maison</a><a href="#contact">Contact</a>
+        <a href="#inspirations">Paris</a><a href="#inspirations">Provence</a><a href="#inspirations">Côte d'Azur</a><a href="#inspirations">Champagne</a><a href="#services">La Maison</a><a href="#contact">Contact</a>
       </div>
     </div>
     <div class="footer-bottom">© 1987 — 2026 KTS Tourisme et Voyage SARL · IM075100068 · 20 rue de Boulainvilliers, 75016 Paris · +33 (0)1 58 36 66 66</div>
@@ -301,11 +324,61 @@ a{color:inherit;text-decoration:none}
   <a href="mailto:groups@ktstravel.com" class="devis-btn">Créons votre devis</a>
 </div>
 
+<!-- MENU OVERLAY -->
+<div class="menu-overlay" id="menuOverlay" aria-hidden="true">
+  <div class="menu-head">
+    <button class="menu-close" id="menuClose" aria-label="Fermer le menu"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <span class="menu-logo">KTS<span class="star">✦</span>TRAVEL</span>
+    <button class="menu-srch" id="menuSearch" aria-label="Rechercher"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></button>
+  </div>
+  <div class="menu-body">
+    <nav class="menu-primary">
+      <a href="#inspirations" data-menu>Où partir</a>
+      <a href="#services" data-menu>Nos expériences</a>
+      <a href="#inspirations" data-menu>Destinations</a>
+    </nav>
+    <nav class="menu-secondary">
+      <a href="#services" data-menu>Qui sommes-nous ?</a>
+      <a href="#contact" data-menu>Nous contacter</a>
+      <a href="mailto:groups@ktstravel.com" data-menu>Créons votre devis</a>
+    </nav>
+    <div class="menu-lang">
+      <a href="#" data-menu onclick="return false">Langue : Français</a>
+    </div>
+  </div>
+</div>
+
 <script>
 var nav=document.getElementById('nav');
 addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>window.innerHeight-90)},{passive:true});
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
 document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+
+/* ---- Menu overlay ---- */
+var menu=document.getElementById('menuOverlay');
+function closeMenu(){menu.classList.remove('open');menu.setAttribute('aria-hidden','true')}
+document.getElementById('btnMenu').addEventListener('click',function(e){e.preventDefault();menu.classList.add('open');menu.setAttribute('aria-hidden','false')});
+document.getElementById('menuClose').addEventListener('click',closeMenu);
+menu.querySelectorAll('[data-menu]').forEach(function(a){a.addEventListener('click',closeMenu)});
+addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu()});
+
+/* ---- Recherche : remonte en haut et focus le champ ---- */
+function goSearch(e){
+  if(e)e.preventDefault();
+  closeMenu();
+  window.scrollTo({top:0,behavior:'smooth'});
+  setTimeout(function(){document.getElementById('heroSearch').focus()},450);
+}
+document.getElementById('btnSearch').addEventListener('click',goSearch);
+document.getElementById('menuSearch').addEventListener('click',goSearch);
+
+/* ---- Lien FR : pas d'autre langue pour l'instant ---- */
+document.getElementById('langFr').addEventListener('click',function(e){e.preventDefault()});
+
+/* ---- Cartes Inspirations cliquables : vers le devis ---- */
+document.querySelectorAll('.insp-card').forEach(function(c){
+  c.addEventListener('click',function(){document.getElementById('contact').scrollIntoView({behavior:'smooth'})});
+});
 </script>
 </body>
 </html>

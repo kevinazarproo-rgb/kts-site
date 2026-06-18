@@ -183,7 +183,13 @@ a{color:inherit;text-decoration:none}
   /* sections moins hautes, plus aérées */
   .services{padding:3.5rem 0}
   .services .head{margin-bottom:2.4rem}
-  .svc-grid{gap:1.6rem}
+  /* SERVICES en carrousel horizontal swipe (cartes qui dépassent) */
+  .svc-grid{display:flex;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;gap:1rem;padding:0 0 .5rem;
+    scroll-padding-left:clamp(1.25rem,4vw,3.5rem)}
+  .svc-grid::-webkit-scrollbar{display:none}
+  .svc-col,.svc-col.push{flex:0 0 80%;margin-top:0;scroll-snap-align:center;gap:1.2rem}
+  .svc-img img,.svc-img.tall img{aspect-ratio:3/4}
   .svc-txt h3{font-size:1.7rem}
   .insp{padding:3rem 0}
   .insp-head{margin-bottom:1.4rem}
@@ -237,25 +243,25 @@ a{color:inherit;text-decoration:none}
       </div>
       <div class="svc-grid">
         <div class="svc-col">
+          <div class="svc-img reveal"><img src="assets/a1.jpg" alt="Expérience d'exception en France"></div>
           <div class="svc-txt reveal">
             <h3>Accès d'exception</h3>
             <p>L'Opéra Garnier après la fermeture, un château privatisé rien que pour vous, une table sans enseigne. Partout en France, nous ouvrons les portes qui n'ont pas de poignée.</p>
           </div>
-          <div class="svc-img reveal"><img src="assets/a1.jpg" alt="Expérience d'exception en France"></div>
         </div>
         <div class="svc-col push">
           <div class="svc-img tall reveal"><img src="assets/maison.jpg" alt="France"></div>
           <div class="svc-txt reveal">
-            <h3>Créativité sur mesure</h3>
+            <h3>Créativité hors pair</h3>
             <p>Chaque séjour est une création unique, imaginée selon vos envies — du plus classique au plus audacieux. Aucun itinéraire ne se répète.</p>
           </div>
         </div>
         <div class="svc-col">
+          <div class="svc-img reveal"><img src="assets/a2.jpg" alt="France"></div>
           <div class="svc-txt reveal">
-            <h3>Service d'exception</h3>
+            <h3>Assistance sur mesure</h3>
             <p>Discrétion, réactivité, anticipation. Une conciergerie dédiée veille sur chaque instant pour que vous n'ayez qu'à vous laisser porter.</p>
           </div>
-          <div class="svc-img reveal"><img src="assets/a2.jpg" alt="France"></div>
         </div>
       </div>
     </div>

@@ -140,6 +140,43 @@ a{color:inherit;text-decoration:none}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+
+/* ============================================================
+   MOBILE / TÉLÉPHONE — affinages responsive
+   ============================================================ */
+@media(max-width:760px){
+  body{font-size:15px}
+  /* hero plus contenu, titre impactant et lisible */
+  .hero{min-height:540px;height:88svh}
+  .hero-inner{transform:none}
+  .hero h1{font-size:clamp(3rem,18vw,5.5rem);letter-spacing:.03em;line-height:1}
+  .hero-search{max-width:90%;gap:.65rem;padding:.65rem .3rem;margin-top:1.8rem}
+  .hero-search svg{width:15px;height:15px}
+  .hero-search input{min-width:0;flex:1 1 auto;width:100%;font-size:.7rem;letter-spacing:.14em;text-align:left}
+  /* nav resserrée */
+  .nav{padding:1.1rem 1.25rem}
+  .nav-left{gap:1.1rem}
+  .nav-right{gap:1.1rem}
+  /* sections moins hautes, plus aérées */
+  .services{padding:3.5rem 0}
+  .services .head{margin-bottom:2.4rem}
+  .svc-grid{gap:1.6rem}
+  .svc-txt h3{font-size:1.7rem}
+  .insp{padding:3rem 0}
+  .insp-head{margin-bottom:1.4rem}
+  .quote{padding:4rem 1.5rem}
+  /* footer empilé proprement */
+  .footer-top{flex-direction:column;align-items:flex-start;gap:1.4rem}
+  .footer-links{gap:.9rem 1.3rem}
+}
+@media(max-width:480px){
+  .nav-logo{letter-spacing:.2em;font-size:.9rem}
+  .hero h1{font-size:clamp(2.9rem,19vw,4.6rem)}
+  .regions .wrap{gap:1rem 1.6rem}
+  .regions a{font-size:.86rem}
+  /* carte inspiration occupe presque tout l'écran (plus immersif) */
+  .insp-card{flex:0 0 78vw}
+}
 </style>
 </head>
 <body>

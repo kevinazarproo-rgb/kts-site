@@ -34,4 +34,15 @@
 
   /* lien FR : une seule langue pour l'instant */
   var fr=document.getElementById('langFr'); if(fr)fr.addEventListener('click',function(e){e.preventDefault()});
+
+  /* diaporama hero : fondu enchaîné automatique (effet vidéo) */
+  var slides=document.querySelectorAll('.hero-slide');
+  if(slides.length>1){
+    var i=0;
+    setInterval(function(){
+      slides[i].classList.remove('active');
+      i=(i+1)%slides.length;
+      slides[i].classList.add('active');
+    },5000);
+  }
 })();

@@ -45,7 +45,12 @@ a{color:inherit;text-decoration:none}
 .hero.compact{height:74svh;min-height:480px}
 .hero-bg{position:absolute;inset:0;z-index:0}
 .hero-bg img{width:100%;height:100%;object-fit:cover}
-.hero-bg::after{content:'';position:absolute;inset:0;background:rgba(20,20,20,.28)}
+.hero-bg::after{content:'';position:absolute;inset:0;background:rgba(20,20,20,.28);z-index:2}
+/* diaporama hero (fondu enchaîné + léger zoom "vidéo") */
+.hero-slide{position:absolute;inset:0;z-index:1;opacity:0;transition:opacity 1.8s var(--ease)}
+.hero-slide.active{opacity:1}
+.hero-slide img{transform:scale(1.02);transition:transform 7s linear}
+.hero-slide.active img{transform:scale(1.12)}
 .hero-inner{position:relative;z-index:2;text-align:center;width:100%;padding:0 1.5rem;transform:translateY(-4%)}
 .hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(3.2rem,11vw,10rem);line-height:.95;letter-spacing:.06em;
   text-transform:uppercase;text-shadow:0 2px 40px rgba(0,0,0,.25)}

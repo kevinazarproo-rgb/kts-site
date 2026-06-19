@@ -224,12 +224,19 @@
     <button class="menu-srch" id="menuSearch" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></button>
   </div>
   <div class="menu-body">
-    <nav class="menu-primary">
-      <a href="paris.html" data-menu>Paris</a>
-      <a href="provence.html" data-menu>Provence</a>
-      <a href="cote-azur.html" data-menu>French Riviera</a>
-      <a href="champagne.html" data-menu>Champagne</a>
-      <a href="val-de-loire.html" data-menu>Loire Valley</a>
+        <nav class="menu-primary">
+      <button class="menu-acc" id="accDest" aria-expanded="false">Destinations <span class="acc-ico">+</span></button>
+      <div class="menu-sub" id="subDest">
+        <a href="paris.html" data-menu>Paris</a>
+        <a href="cote-azur.html" data-menu>French Riviera</a>
+        <a href="cote-azur.html" data-menu>Cannes</a>
+        <a href="cote-azur.html" data-menu>Saint-Tropez</a>
+        <a href="provence.html" data-menu>Provence</a>
+        <a href="champagne.html" data-menu>Champagne</a>
+        <a href="val-de-loire.html" data-menu>Loire Valley</a>
+        <a href="destinations.html" data-menu>All destinations</a>
+      </div>
+      <a href="expertise.html" data-menu>Expertise</a>
     </nav>
     <nav class="menu-secondary">
       <a href="index.html#apropos" data-menu>About us</a>
@@ -237,7 +244,8 @@
       <a href="mailto:groups@ktstravel.com" data-menu>Request a quote</a>
     </nav>
     <div class="menu-lang">
-      <a href="index-fr.html">Language: English</a>
+      <a href="index-fr.html" data-menu>Français</a>
+      <span class="active">English</span>
     </div>
   </div>
 </div>

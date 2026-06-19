@@ -35,6 +35,17 @@
   var bs=document.getElementById('btnSearch'); if(bs)bs.addEventListener('click',goSearch);
   var ms=document.getElementById('menuSearch'); if(ms)ms.addEventListener('click',goSearch);
 
+  /* menu : accordéon Destinations */
+  var acc=document.getElementById('accDest');
+  if(acc){
+    acc.addEventListener('click',function(){
+      var sub=document.getElementById('subDest');
+      var open=acc.classList.toggle('open');
+      if(sub)sub.classList.toggle('open',open);
+      acc.setAttribute('aria-expanded',open);
+    });
+  }
+
   /* sélecteur de langue : liens réels (la langue active n'est pas cliquable) */
   document.querySelectorAll('.nav-lang a').forEach(function(a){
     a.addEventListener('click',function(e){ if(this.getAttribute('href')==='#') e.preventDefault(); });

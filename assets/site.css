@@ -299,11 +299,21 @@ a.svc-col:hover .svc-more{text-decoration:underline}
 .menu-body{padding:.5rem clamp(1.25rem,4vw,3.5rem) 3rem;display:flex;flex-direction:column;max-width:var(--maxw);width:100%}
 .menu-primary{display:flex;flex-direction:column;gap:1.25rem;padding:1.8rem 0}
 .menu-primary a{font-family:var(--serif);font-weight:300;font-size:clamp(1.9rem,7vw,2.5rem);line-height:1.1;color:var(--ink);transition:color .3s}
+.menu-acc{background:none;border:none;cursor:pointer;text-align:left;font-family:var(--serif);font-weight:300;font-size:clamp(1.9rem,7vw,2.5rem);line-height:1.1;color:var(--ink);display:flex;align-items:center;gap:.6rem;padding:0;transition:color .3s}
+.menu-acc:hover{color:var(--accent)}
+.menu-acc .acc-ico{font-family:var(--sans);font-weight:300;font-size:1.4rem;color:var(--accent);transition:transform .35s var(--ease);line-height:1}
+.menu-acc.open .acc-ico{transform:rotate(45deg)}
+.menu-sub{display:none;flex-direction:column;gap:.7rem;margin:.9rem 0 .2rem;padding-left:1.1rem;border-left:1px solid var(--line)}
+.menu-sub.open{display:flex}
+.menu-sub a{font-family:var(--sans);font-weight:300;font-size:1.05rem;color:var(--ink);transition:color .3s}
+.menu-sub a:hover{color:var(--accent)}
 .menu-secondary{display:flex;flex-direction:column;gap:1.1rem;padding:1.8rem 0;border-top:1px solid var(--line)}
 .menu-secondary a{font-family:var(--sans);font-weight:300;font-size:1.05rem;color:var(--ink);transition:color .3s}
-.menu-lang{padding-top:1.8rem;border-top:1px solid var(--line)}
-.menu-lang a{font-family:var(--sans);font-weight:400;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
-  text-decoration:underline;text-underline-offset:5px;color:var(--ink)}
+.menu-lang{padding-top:1.8rem;border-top:1px solid var(--line);display:flex;gap:1.4rem;align-items:center;
+  font-family:var(--sans);font-weight:400;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase}
+.menu-lang a{color:var(--muted)}
+.menu-lang a:hover{color:var(--accent)}
+.menu-lang .active{color:var(--ink)}
 .menu-overlay a:hover{color:var(--accent)}
 
 /* reveal */

@@ -117,12 +117,19 @@
     <button class="menu-srch" id="menuSearch" aria-label="Rechercher"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></button>
   </div>
   <div class="menu-body">
-    <nav class="menu-primary">
-      <a href="paris.html" data-menu>Paris</a>
-      <a href="provence.html" data-menu>Provence</a>
-      <a href="cote-azur.html" data-menu>C&ocirc;te d'Azur</a>
-      <a href="champagne.html" data-menu>Champagne</a>
-      <a href="val-de-loire.html" data-menu>Val de Loire</a>
+        <nav class="menu-primary">
+      <button class="menu-acc" id="accDest" aria-expanded="false">Destinations <span class="acc-ico">+</span></button>
+      <div class="menu-sub" id="subDest">
+        <a href="paris.html" data-menu>Paris</a>
+        <a href="cote-azur.html" data-menu>C&ocirc;te d'Azur</a>
+        <a href="cote-azur.html" data-menu>Cannes</a>
+        <a href="cote-azur.html" data-menu>Saint-Tropez</a>
+        <a href="provence.html" data-menu>Provence</a>
+        <a href="champagne.html" data-menu>Champagne</a>
+        <a href="val-de-loire.html" data-menu>Val de Loire</a>
+        <a href="destinations.html" data-menu>Toutes les destinations</a>
+      </div>
+      <a href="expertise-fr.html" data-menu>Expertise</a>
     </nav>
     <nav class="menu-secondary">
       <a href="index.html#apropos" data-menu>Qui sommes-nous ?</a>
@@ -130,7 +137,8 @@
       <a href="mailto:groups@ktstravel.com" data-menu>Cr&eacute;ons votre devis</a>
     </nav>
     <div class="menu-lang">
-      <a href="#" data-menu onclick="return false">Langue : Fran&ccedil;ais</a>
+      <span class="active">Français</span>
+      <a href="index.html" data-menu>English</a>
     </div>
   </div>
 </div>

@@ -298,10 +298,12 @@ a.svc-col:hover .svc-more{text-decoration:underline}
 .menu-srch svg{width:22px;height:22px;stroke:var(--ink);stroke-width:1.3;fill:none}
 .menu-body{padding:1.5rem clamp(1.25rem,4vw,3.5rem) 3rem;display:flex;gap:clamp(2rem,6vw,6rem);align-items:flex-start;max-width:var(--maxw);width:100%}
 .menu-nav{flex:0 0 auto;min-width:220px;display:flex;flex-direction:column}
-.menu-panel{flex:1;display:none;flex-direction:column;gap:1.1rem}
-.menu-panel.open{display:flex}
-.menu-panel a{font-family:var(--sans);font-weight:300;font-size:1.15rem;color:var(--ink);transition:color .3s}
+.menu-panel{flex:1;display:none;grid-template-columns:1fr 1fr;gap:1rem 1.6rem;align-content:start}
+.menu-panel.open{display:grid}
+.menu-panel a{display:flex;align-items:center;gap:.9rem;font-family:var(--sans);font-weight:300;font-size:1.05rem;color:var(--ink);transition:color .3s}
+.menu-panel a img{width:68px;height:52px;object-fit:cover;flex:0 0 auto;display:block}
 .menu-panel a:hover{color:var(--accent)}
+@media(max-width:700px){.menu-panel{grid-template-columns:1fr;gap:.9rem}}
 @media(max-width:700px){.menu-body{flex-direction:column;gap:1.3rem}.menu-nav{min-width:0;width:100%}}
 .menu-primary{display:flex;flex-direction:column;gap:1.1rem;padding:1.6rem 0 0}
 .menu-primary a{font-family:var(--sans);font-weight:300;font-size:1.05rem;letter-spacing:.02em;color:var(--ink);transition:color .3s}

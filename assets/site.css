@@ -226,7 +226,8 @@ a.svc-col:hover .svc-more{text-decoration:underline}
 .dest-section.alt{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 /* grille des villes */
 .places{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.4rem,3vw,2.4rem)}
-.place{border-top:1px solid var(--line);padding-top:1.1rem}
+.place{display:flex;flex-direction:column}
+.place img{width:100%;aspect-ratio:3/2;object-fit:cover;display:block;margin-bottom:1rem}
 .place h4{font-family:var(--serif);font-weight:400;font-size:1.45rem;margin-bottom:.4rem}
 .place p{color:var(--muted);font-size:.92rem;line-height:1.65}
 @media(max-width:760px){.places{grid-template-columns:1fr 1fr;gap:1.2rem}}

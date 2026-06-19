@@ -443,3 +443,9 @@ a.svc-col:hover .svc-more{text-decoration:underline}
 .pm-label{font-family:var(--sans);font-weight:500;font-size:22px;fill:var(--ink);letter-spacing:.02em}
 .pm-cap{font-family:var(--sans);font-weight:400;font-size:15px;letter-spacing:.18em;text-transform:uppercase;fill:var(--muted)}
 @media(max-width:600px){.pm-label{font-size:27px}.pm-cap{font-size:19px}}
+
+/* carte Paris v2 — icônes au trait */
+.pm-ring2{fill:#fff;stroke:#aebfcf;stroke-width:7;opacity:.9}
+.pm-ico{fill:none;stroke:var(--navy);stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}
+.pm-name{font-family:var(--sans);font-weight:500;font-size:19px;fill:var(--ink);}
+@media(max-width:600px){.pm-name{font-size:24px}}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Destinations &mdash; KTS Travel</title>
+<meta name="description" content="Toutes les destinations KTS France : Paris, Provence, C&ocirc;te d'Azur, Champagne, Val de Loire. Des voyages d'exception compos&eacute;s &agrave; la main.">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<header class="hero compact">
+  <div class="hero-bg"><img src="assets/hero1.jpg" alt="Destinations KTS France"></div>
+  <div class="hero-inner">
+    <div class="hero-kicker">France</div>
+    <h1>Destinations</h1>
+  </div>
+  <nav class="nav" id="nav">
+    <div class="nav-left util">
+    </div>
+    <a href="index.html" class="nav-logo"><img src="assets/logo-mark.png" alt="KTS France"></a>
+    <div class="nav-right util">
+      <a href="tel:+33158366666" class="lbl-contact">+33 (0)1 58 36 66 66</a>
+      <a class="nav-soc" href="https://www.instagram.com/kts.france/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+      <a class="nav-soc" href="https://www.linkedin.com/company/kts-france/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10.5V17M7 7.2v.01M11 17v-3.5a2 2 0 014 0V17"/></svg></a>
+      <span class="nav-lang"><a href="#" id="langFr" class="active">FR</a><a href="#" id="langEn">EN</a></span>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <div class="wrap"><nav class="breadcrumb"><a href="index.html">France</a> <span class="sep">&rsaquo;</span> Destinations</nav></div>
+
+  <section class="insp">
+    <div class="wrap">
+      <div class="dest-head reveal">
+        <span class="eyebrow">Exp&eacute;rience unique</span>
+        <h2>Nos destinations</h2>
+        <span class="dest-dash"></span>
+      </div>
+      <div class="dest-grid five">
+        <a class="dest-card reveal" href="paris.html"><div class="ph"><img src="assets/a2.jpg" alt="Paris"></div><h4>Paris</h4></a>
+        <a class="dest-card reveal" href="provence.html"><div class="ph"><img src="assets/maison.jpg" alt="Provence"></div><h4>Provence</h4></a>
+        <a class="dest-card reveal" href="cote-azur.html"><div class="ph"><img src="assets/hero2.jpg" alt="C&ocirc;te d'Azur"></div><h4>C&ocirc;te d'Azur</h4></a>
+        <a class="dest-card reveal" href="champagne.html"><div class="ph"><img src="assets/a1.jpg" alt="Champagne"></div><h4>Champagne</h4></a>
+        <a class="dest-card reveal" href="val-de-loire.html"><div class="ph"><img src="assets/hero1.jpg" alt="Val de Loire"></div><h4>Val de Loire</h4></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta reveal">
+    <span class="eyebrow">Sur mesure</span>
+    <h2>Une destination en t&ecirc;te&nbsp;?</h2>
+    <a class="btn" href="mailto:groups@ktstravel.com?subject=Projet%20de%20voyage">Cr&eacute;ons votre devis</a>
+  </section>
+</main>
+
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <div class="footer-top">
+      <a href="index.html" class="footer-logo"><img src="assets/logo-mark.png" alt="KTS France"></a>
+      <div class="footer-links">
+        <a href="paris.html">Paris</a><a href="provence.html">Provence</a><a href="cote-azur.html">C&ocirc;te d'Azur</a><a href="champagne.html">Champagne</a><a href="val-de-loire.html">Val de Loire</a><a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 1987 &mdash; 2026 KTS Tourisme et Voyage SARL &middot; IM075100068 &middot; 20 rue de Boulainvilliers, 75016 Paris &middot; +33 (0)1 58 36 66 66</div>
+  </div>
+</footer>
+
+<div class="devis">
+  <button class="devis-menu" id="btnMenuBar" aria-label="Ouvrir le menu"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>Menu</button>
+  <a href="mailto:groups@ktstravel.com" class="devis-btn">Cr&eacute;ons votre devis</a>
+</div>
+
+<div class="menu-overlay" id="menuOverlay" aria-hidden="true">
+  <div class="menu-head">
+    <button class="menu-close" id="menuClose" aria-label="Fermer le menu"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <span class="menu-logo"><img src="assets/logo-mark.png" alt="KTS France"></span>
+    <button class="menu-srch" id="menuSearch" aria-label="Rechercher"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></button>
+  </div>
+  <div class="menu-body">
+    <nav class="menu-primary">
+      <a href="paris.html" data-menu>Paris</a>
+      <a href="provence.html" data-menu>Provence</a>
+      <a href="cote-azur.html" data-menu>C&ocirc;te d'Azur</a>
+      <a href="champagne.html" data-menu>Champagne</a>
+      <a href="val-de-loire.html" data-menu>Val de Loire</a>
+    </nav>
+    <nav class="menu-secondary">
+      <a href="index.html#apropos" data-menu>Qui sommes-nous ?</a>
+      <a href="#contact" data-menu>Nous contacter</a>
+      <a href="mailto:groups@ktstravel.com" data-menu>Cr&eacute;ons votre devis</a>
+    </nav>
+    <div class="menu-lang">
+      <a href="#" data-menu onclick="return false">Langue : Fran&ccedil;ais</a>
+    </div>
+  </div>
+</div>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

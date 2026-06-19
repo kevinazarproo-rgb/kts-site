@@ -296,13 +296,20 @@ a.svc-col:hover .svc-more{text-decoration:underline}
 .menu-close svg{width:100%;height:100%;stroke:var(--accent);stroke-width:1.3;fill:none}
 .menu-srch{justify-self:end;width:30px;height:30px;cursor:pointer;background:none;border:none;padding:0}
 .menu-srch svg{width:22px;height:22px;stroke:var(--ink);stroke-width:1.3;fill:none}
-.menu-body{padding:.5rem clamp(1.25rem,4vw,3.5rem) 3rem;display:flex;flex-direction:column;max-width:var(--maxw);width:100%}
+.menu-body{padding:1.5rem clamp(1.25rem,4vw,3.5rem) 3rem;display:flex;gap:clamp(2rem,6vw,6rem);align-items:flex-start;max-width:var(--maxw);width:100%}
+.menu-nav{flex:0 0 auto;min-width:220px;display:flex;flex-direction:column}
+.menu-panel{flex:1;display:none;flex-direction:column;gap:1.1rem}
+.menu-panel.open{display:flex}
+.menu-panel a{font-family:var(--sans);font-weight:300;font-size:1.15rem;color:var(--ink);transition:color .3s}
+.menu-panel a:hover{color:var(--accent)}
+@media(max-width:700px){.menu-body{flex-direction:column;gap:1.3rem}.menu-nav{min-width:0;width:100%}}
 .menu-primary{display:flex;flex-direction:column;gap:1.1rem;padding:1.6rem 0 0}
 .menu-primary a{font-family:var(--sans);font-weight:300;font-size:1.05rem;letter-spacing:.02em;color:var(--ink);transition:color .3s}
 .menu-acc{background:none;border:none;cursor:pointer;text-align:left;font-family:var(--sans);font-weight:300;font-size:1.05rem;letter-spacing:.02em;color:var(--ink);display:flex;align-items:center;gap:.5rem;padding:0;transition:color .3s}
 .menu-acc:hover{color:var(--accent)}
-.menu-acc .acc-ico{font-family:var(--sans);font-weight:300;font-size:1.05rem;color:var(--accent);transition:transform .35s var(--ease);line-height:1}
-.menu-acc.open .acc-ico{transform:rotate(45deg)}
+.menu-acc .acc-ico{display:inline-flex;align-items:center;transition:transform .35s var(--ease)}
+.menu-acc .acc-ico svg{width:11px;height:11px;stroke:var(--accent);fill:none;stroke-width:1.7}
+.menu-acc.open .acc-ico{transform:rotate(90deg)}
 .menu-sub{display:none;flex-direction:column;gap:1.1rem;margin:1.1rem 0 0;padding:0}
 .menu-sub.open{display:flex}
 .menu-sub a{font-family:var(--sans);font-weight:300;font-size:1.05rem;color:var(--ink);transition:color .3s}

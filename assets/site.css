@@ -464,3 +464,10 @@ a.svc-col:hover .svc-more{text-decoration:underline}
 .pm-seine2{fill:none;stroke:var(--teal);stroke-width:15;opacity:.3;stroke-linecap:round}
 .pm-name2{font-family:var(--sans);font-weight:500;font-size:18px;fill:var(--ink);text-anchor:middle}
 @media(max-width:600px){.pm-name2{font-size:22px}.pm-arr{font-size:27px}}
+
+/* ---- carte de France illustrée ---- */
+.francemap{padding:clamp(2.5rem,5vw,4.5rem) 0}
+.francemap-wrap{max-width:720px;margin:0 auto}
+.francemap svg{width:100%;height:auto;display:block}
+.fm-land{fill:#dde2f1;stroke:#fff;stroke-width:3;stroke-linejoin:round}
+.fm-div{fill:none;stroke:#fff;stroke-width:2;opacity:.85}

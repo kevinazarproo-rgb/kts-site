@@ -2,10 +2,10 @@
 (function(){
   /* nav : devient fixe/claire après le hero */
   var nav=document.getElementById('nav');
-  var heroEl=document.querySelector('.hero');
   if(nav){
-    var threshold=function(){return (heroEl?heroEl.offsetHeight:window.innerHeight)-90;};
-    addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>threshold())},{passive:true});
+    var onScroll=function(){nav.classList.toggle('scrolled',scrollY>60)};
+    addEventListener('scroll',onScroll,{passive:true});
+    onScroll();
   }
 
   /* reveal au scroll */

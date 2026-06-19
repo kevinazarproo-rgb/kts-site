@@ -74,19 +74,19 @@ a{color:inherit;text-decoration:none}
 .hero-search input::placeholder{color:rgba(255,255,255,.85)}
 
 /* ---- À PROPOS (éditorial clair, façon agence) ---- */
-.about{background:#f4f0e8}
-.about-trust{border-bottom:1px solid #e6e0d3;background:#fff}
+.about{background:var(--paper-2)}
+.about-trust{border-bottom:1px solid var(--line);background:#fff}
 .about-trust .wrap{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.8rem 2.4rem;padding:1.05rem clamp(1.25rem,4vw,3.5rem)}
-.about-trust span{font-family:var(--sans);font-weight:400;font-size:.82rem;letter-spacing:.03em;color:#5b574e;display:inline-flex;align-items:center;gap:.5rem}
-.about-trust .tk{width:15px;height:15px;stroke:var(--teal);fill:none;stroke-width:2}
+.about-trust span{font-family:var(--sans);font-weight:400;font-size:.82rem;letter-spacing:.03em;color:var(--muted);display:inline-flex;align-items:center;gap:.5rem}
+.about-trust .tk{width:15px;height:15px;stroke:var(--accent);fill:none;stroke-width:2}
 .about-main{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:clamp(1.6rem,3vw,3rem);align-items:start;
   padding:clamp(3rem,6vw,5rem) 0}
-.about-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,3.6vw,3rem);line-height:1.08;color:var(--navy)}
-.about-head h2 em{font-style:italic;color:var(--teal)}
-.acol h3{font-family:var(--sans);font-weight:500;font-size:1.02rem;color:var(--navy);line-height:1.25}
-.acol .rule{display:block;width:46px;height:3px;background:var(--teal);border-radius:2px;margin:.7rem 0 1rem}
-.acol .stat{font-family:var(--sans);font-weight:600;font-size:.97rem;color:var(--teal);margin-bottom:.5rem;line-height:1.3}
-.acol p{font-family:var(--sans);font-weight:300;font-size:.95rem;line-height:1.7;color:#5b574e}
+.about-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,3.6vw,3rem);line-height:1.08;color:var(--ink)}
+.about-head h2 em{font-style:italic;color:var(--accent)}
+.acol h3{font-family:var(--sans);font-weight:500;font-size:1.02rem;color:var(--ink);line-height:1.25}
+.acol .rule{display:block;width:46px;height:3px;background:var(--accent);border-radius:2px;margin:.7rem 0 1rem}
+.acol .stat{font-family:var(--sans);font-weight:600;font-size:.97rem;color:var(--accent);margin-bottom:.5rem;line-height:1.3}
+.acol p{font-family:var(--sans);font-weight:300;font-size:.95rem;line-height:1.7;color:var(--muted)}
 @media(max-width:960px){
   .about-main{grid-template-columns:1fr 1fr;gap:1.8rem 2rem}
   .about-head{grid-column:1 / -1;margin-bottom:.4rem}

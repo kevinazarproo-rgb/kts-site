@@ -458,3 +458,9 @@ a.svc-col:hover .svc-more{text-decoration:underline}
 .site-lbl{background:var(--accent);color:#fff;border:none;font-family:var(--sans);font-weight:500;font-size:12px;letter-spacing:.02em;padding:3px 8px;border-radius:3px;box-shadow:0 2px 6px rgba(0,0,0,.25)}
 .site-lbl.leaflet-tooltip-top::before{border-top-color:var(--accent)}
 @media(max-width:600px){#parismap-leaflet{height:60vh}}
+
+/* carte illustrée v3 — arrondissements + icônes */
+.pm-arr{font-family:var(--sans);font-weight:600;font-size:23px;fill:#aab4c4}
+.pm-seine2{fill:none;stroke:var(--teal);stroke-width:15;opacity:.3;stroke-linecap:round}
+.pm-name2{font-family:var(--sans);font-weight:500;font-size:18px;fill:var(--ink);text-anchor:middle}
+@media(max-width:600px){.pm-name2{font-size:22px}.pm-arr{font-size:27px}}

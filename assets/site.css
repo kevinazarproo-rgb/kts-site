@@ -471,3 +471,5 @@ a.svc-col:hover .svc-more{text-decoration:underline}
 .francemap svg{width:100%;height:auto;display:block}
 .fm-land{fill:#dde2f1;stroke:#fff;stroke-width:3;stroke-linejoin:round}
 .fm-div{fill:none;stroke:#fff;stroke-width:2;opacity:.85}
+
+.francemap-wrap img{width:100%;height:auto;display:block;border-radius:4px}

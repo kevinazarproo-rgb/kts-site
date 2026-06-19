@@ -107,6 +107,9 @@ a{color:inherit;text-decoration:none}
 .svc-img img{width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform 1.4s var(--ease)}
 .svc-img:hover img{transform:scale(1.05)}
 .svc-img.tall img{aspect-ratio:3/5}
+a.svc-col{color:inherit}
+a.svc-col:hover h3{color:var(--accent)}
+a.svc-col:hover .svc-img img{transform:scale(1.05)}
 @media(max-width:860px){.svc-grid{grid-template-columns:1fr 1fr;gap:1.5rem}.svc-col.push{margin-top:0}}
 @media(max-width:560px){.svc-grid{grid-template-columns:1fr}}
 

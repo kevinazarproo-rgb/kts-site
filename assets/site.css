@@ -74,21 +74,21 @@ a{color:inherit;text-decoration:none}
 .hero-search input::placeholder{color:rgba(255,255,255,.85)}
 
 /* ---- À PROPOS ---- */
-.about{padding:clamp(4rem,8vw,7rem) 0}
+.about{padding:clamp(4rem,8vw,7rem) 0;background:linear-gradient(160deg,#0e3a6b 0%,#0a2c52 100%);color:#fff}
 .about-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(2.5rem,6vw,5rem);align-items:center}
 .about-media{position:relative}
 .about-media img{width:100%;aspect-ratio:4/5;max-height:560px;object-fit:cover;position:relative;z-index:1}
 .about-media::after{content:'';position:absolute;right:-18px;bottom:-18px;width:62%;height:66%;
-  background:linear-gradient(135deg,var(--teal),var(--navy));opacity:.16;z-index:0}
-.about-txt .eyebrow{display:block;margin-bottom:1rem}
-.about-txt h2{font-family:var(--serif);font-weight:300;font-size:clamp(2.1rem,4.2vw,3.1rem);line-height:1.1;color:var(--navy);margin-bottom:1.4rem}
-.about-txt p{color:var(--muted);font-size:1.02rem;line-height:1.9;margin-bottom:1.1rem;max-width:52ch}
-.about-sign{font-family:var(--serif);font-style:italic;font-size:1.25rem;color:var(--navy);margin-top:.4rem}
+  background:var(--teal);opacity:.55;z-index:0}
+.about-txt .eyebrow{display:block;margin-bottom:1rem;color:var(--teal)}
+.about-txt h2{font-family:var(--serif);font-weight:300;font-size:clamp(2.1rem,4.2vw,3.1rem);line-height:1.1;color:#fff;margin-bottom:1.4rem}
+.about-txt p{color:rgba(255,255,255,.8);font-size:1.02rem;line-height:1.9;margin-bottom:1.1rem;max-width:52ch}
+.about-sign{font-family:var(--serif);font-style:italic;font-size:1.3rem;color:var(--teal);margin-top:.4rem}
 .about-stats{display:flex;gap:clamp(1.6rem,4vw,3rem);margin-top:2.2rem;flex-wrap:wrap}
 .stat{position:relative;padding-left:1rem}
 .stat::before{content:'';position:absolute;left:0;top:.35rem;bottom:.35rem;width:2px;background:var(--teal)}
-.stat .num{display:block;font-family:var(--serif);font-weight:400;font-size:2.4rem;line-height:1;color:var(--navy)}
-.stat .lbl{display:block;margin-top:.5rem;font-family:var(--sans);font-weight:400;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);max-width:18ch}
+.stat .num{display:block;font-family:var(--serif);font-weight:400;font-size:2.4rem;line-height:1;color:#fff}
+.stat .lbl{display:block;margin-top:.5rem;font-family:var(--sans);font-weight:400;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.62);max-width:18ch}
 @media(max-width:860px){
   .about-grid{grid-template-columns:1fr;gap:2.2rem}
   .about-media{order:-1}

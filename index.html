@@ -145,10 +145,18 @@
         <h2>Expériences</h2>
         <span class="dest-dash"></span>
       </div>
-      <div class="dest-grid exp-grid">
-        <a class="dest-card reveal" href="paris.html"><div class="ph"><img src="assets/a1.jpg" alt="Soirée au Palais Garnier"></div><h4>Palais Garnier</h4></a>
-        <a class="dest-card reveal" href="val-de-loire.html"><div class="ph"><img src="assets/maison.jpg" alt="Château privatisé"></div><h4>Château privatisé</h4></a>
-        <a class="dest-card reveal" href="cote-azur.html"><div class="ph"><img src="assets/hero2.jpg" alt="Yacht sur la Côte d'Azur"></div><h4>Yacht privé</h4></a>
+      <div class="exp-carousel">
+        <button class="exp-arrow prev" aria-label="Précédent" onclick="document.getElementById('expTrack').scrollBy({left:-340,behavior:'smooth'})"><svg viewBox="0 0 14 14"><path d="M9 2L4 7l5 5"/></svg></button>
+        <div class="exp-track" id="expTrack">
+          <a class="exp-card reveal" href="paris.html"><div class="ph"><img src="assets/a1.jpg" alt="Palais Garnier"></div><h4>Palais Garnier</h4></a>
+          <a class="exp-card reveal" href="val-de-loire.html"><div class="ph"><img src="assets/hero1.jpg" alt="Château privatisé"></div><h4>Château privatisé</h4></a>
+          <a class="exp-card reveal" href="cote-azur.html"><div class="ph"><img src="assets/hero2.jpg" alt="Yacht privé"></div><h4>Yacht privé</h4></a>
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=Jet%20priv%C3%A9"><div class="ph"><img src="assets/a2.jpg" alt="Jet privé"></div><h4>Jet privé</h4></a>
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=D%C3%AEner%20%C3%A9toil%C3%A9"><div class="ph"><img src="assets/maison.jpg" alt="Dîner étoilé"></div><h4>Dîner étoilé</h4></a>
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=Survol%20en%20h%C3%A9licopt%C3%A8re"><div class="ph"><img src="assets/a1.jpg" alt="Survol en hélicoptère"></div><h4>Hélicoptère privé</h4></a>
+          <a class="exp-card reveal" href="champagne.html"><div class="ph"><img src="assets/a2.jpg" alt="Cave de Champagne"></div><h4>Cave de Champagne</h4></a>
+        </div>
+        <button class="exp-arrow next" aria-label="Suivant" onclick="document.getElementById('expTrack').scrollBy({left:340,behavior:'smooth'})"><svg viewBox="0 0 14 14"><path d="M5 2l5 5-5 5"/></svg></button>
       </div>
     </div>
   </section>
@@ -158,9 +166,6 @@
   <div class="wrap">
     <div class="footer-top">
       <a href="index.html" class="footer-logo"><img src="assets/logo-mark.png" alt="KTS France"></a>
-      <div class="footer-links">
-        <a href="#inspirations">Paris</a><a href="#inspirations">Provence</a><a href="#inspirations">Côte d'Azur</a><a href="#inspirations">Champagne</a><a href="#apropos">À propos</a><a href="#contact">Contact</a>
-      </div>
     </div>
     <div class="footer-bottom">© 1987 — 2026 KTS Tourisme et Voyage SARL · IM075100068 · 20 rue de Boulainvilliers, 75016 Paris · +33 (0)1 58 36 66 66</div>
   </div>

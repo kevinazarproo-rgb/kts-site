@@ -80,7 +80,7 @@ a{color:inherit;text-decoration:none}
 .about-trust span{font-family:var(--sans);font-weight:400;font-size:.82rem;letter-spacing:.03em;color:var(--muted);display:inline-flex;align-items:center;gap:.5rem}
 .about-trust .tk{width:15px;height:15px;stroke:var(--accent);fill:none;stroke-width:2}
 .about-main{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:clamp(1.6rem,3vw,3rem);align-items:start;
-  padding:clamp(3rem,6vw,5rem) 0}
+  padding:clamp(2.4rem,4.5vw,3.8rem) 0}
 .about-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,3.6vw,3rem);line-height:1.08;color:var(--ink)}
 .about-head h2 em{font-style:italic;color:var(--accent)}
 .acol h3{font-family:var(--sans);font-weight:500;font-size:1.02rem;color:var(--ink);line-height:1.25}
@@ -94,7 +94,7 @@ a{color:inherit;text-decoration:none}
 @media(max-width:560px){.about-main{grid-template-columns:1fr}}
 
 /* ---- INTRO / SERVICES (staggered, editorial) ---- */
-.services{padding:clamp(4.5rem,9vw,8rem) 0}
+.services{padding:clamp(3.2rem,6vw,5.5rem) 0}
 .services .head{text-align:center;max-width:60ch;margin:0 auto clamp(3rem,6vw,5rem)}
 .services .head h2{font-family:var(--serif);font-weight:300;font-size:clamp(2.4rem,5vw,4rem);line-height:1.05;margin-top:1rem}
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.5rem,4vw,3.5rem);align-items:start}
@@ -117,7 +117,7 @@ a{color:inherit;text-decoration:none}
 .regions a:hover,.regions a.active{color:var(--accent)}
 
 /* ---- INSPIRATIONS carousel ---- */
-.insp{padding:clamp(3.5rem,7vw,6rem) 0}
+.insp{padding:clamp(2.6rem,5vw,4.2rem) 0}
 .insp-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:2.2rem}
 .insp-arrows{display:flex;gap:.6rem}
 .insp-arrows button{width:42px;height:42px;border:1px solid var(--line);background:none;display:flex;align-items:center;justify-content:center;
@@ -151,6 +151,24 @@ a{color:inherit;text-decoration:none}
 /* variante Expériences : 3 grandes images en portrait */
 .exp-grid{grid-template-columns:repeat(3,1fr)}
 .exp-grid .dest-card img{aspect-ratio:4/5}
+
+/* carrousel Expériences (flèches + défilement) */
+.exp-carousel{position:relative}
+.exp-track{display:flex;gap:1.2rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:.5rem;scroll-padding-left:2px}
+.exp-track::-webkit-scrollbar{display:none}
+.exp-card{flex:0 0 clamp(230px,26vw,300px);scroll-snap-align:start;display:block;color:inherit}
+.exp-card .ph{overflow:hidden}
+.exp-card img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform 1.4s var(--ease)}
+.exp-card:hover img{transform:scale(1.05)}
+.exp-card h4{margin-top:1rem;text-align:center;font-family:var(--serif);font-weight:400;font-size:1.3rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.exp-arrow{position:absolute;top:42%;transform:translateY(-50%);z-index:6;width:48px;height:48px;border:1px solid var(--line);
+  background:rgba(255,255,255,.92);backdrop-filter:blur(4px);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s var(--ease)}
+.exp-arrow svg{width:14px;height:14px;stroke:var(--ink);fill:none;stroke-width:1.5}
+.exp-arrow:hover{border-color:var(--accent)}
+.exp-arrow:hover svg{stroke:var(--accent)}
+.exp-arrow.prev{left:-14px}
+.exp-arrow.next{right:-14px}
+@media(max-width:760px){.exp-arrow{display:none}}
 @media(max-width:980px){.dest-grid.five{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:860px){.dest-grid,.dest-grid.five,.exp-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.exp-grid{grid-template-columns:1fr}}

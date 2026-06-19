@@ -35,9 +35,10 @@
   var bs=document.getElementById('btnSearch'); if(bs)bs.addEventListener('click',goSearch);
   var ms=document.getElementById('menuSearch'); if(ms)ms.addEventListener('click',goSearch);
 
-  /* sélecteur de langue : FR actif, EN à venir */
-  var fr=document.getElementById('langFr'); if(fr)fr.addEventListener('click',function(e){e.preventDefault()});
-  var en=document.getElementById('langEn'); if(en)en.addEventListener('click',function(e){e.preventDefault()});
+  /* sélecteur de langue : liens réels (la langue active n'est pas cliquable) */
+  document.querySelectorAll('.nav-lang a').forEach(function(a){
+    a.addEventListener('click',function(e){ if(this.getAttribute('href')==='#') e.preventDefault(); });
+  });
 
   /* diaporama hero : fondu enchaîné automatique (effet vidéo) */
   var slides=document.querySelectorAll('.hero-slide');

@@ -135,7 +135,7 @@ a{color:inherit;text-decoration:none}
 .focus-card.accent .eyebrow{color:#fff;opacity:.75}
 .focus-card.accent h2{color:#fff}
 .focus-card.accent p{color:rgba(255,255,255,.9)}
-.focus.duo .wrap{max-width:1060px}
+.focus.duo .wrap{max-width:1180px}
 .focus-duo{display:grid;gap:clamp(1.2rem,2.5vw,2rem);align-items:stretch}
 @media(min-width:861px){.focus-duo{grid-template-columns:1.1fr .9fr}}
 .focus-duo .focus-card{height:100%;text-align:left;display:flex;flex-direction:column;justify-content:center}

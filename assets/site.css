@@ -109,7 +109,7 @@ a{color:inherit;text-decoration:none}
 .exp3-card:nth-child(3){grid-column:1 / -1;max-width:calc(50% - clamp(.8rem,1.5vw,1.3rem));margin-inline:auto}
 @media(max-width:700px){.exp3{grid-template-columns:1fr;max-width:480px}.exp3-card:nth-child(3){grid-column:auto;max-width:none}}
 /* Variante : 3 expériences sur une ligne, pleine largeur (Côte d'Azur) */
-@media(min-width:761px){.places.four{grid-template-columns:repeat(4,1fr);max-width:none;margin:0;gap:clamp(1rem,2vw,1.6rem)}.places.four .place img{height:170px}}
+@media(min-width:761px){.places.four{grid-template-columns:repeat(4,1fr);max-width:none;margin:0;gap:clamp(1.2rem,2.2vw,2rem)}.places.four .place img{height:clamp(220px,20vw,300px)}}
 
 /* ---- Quand partir (bandeau saisonnier) ---- */
 .season{padding:clamp(2.5rem,5vw,4.5rem) 0;background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}

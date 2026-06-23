@@ -228,6 +228,7 @@ a.svc-col:hover .svc-more{text-decoration:underline}
 .dest-dash{display:block;width:38px;height:1px;background:var(--accent);margin:1.1rem auto 0}
 .dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1.1rem,2.4vw,1.8rem)}
 .dest-grid.five{grid-template-columns:repeat(5,1fr)}
+.dest-grid.three{grid-template-columns:repeat(3,1fr)}
 .dest-card{display:block;color:inherit}
 .dest-card .ph{overflow:hidden}
 .dest-card img{width:100%;aspect-ratio:1/1;object-fit:cover;transition:transform 1.4s var(--ease)}
@@ -259,7 +260,8 @@ a.svc-col:hover .svc-more{text-decoration:underline}
 .exp-arrow.next{right:-14px}
 @media(max-width:760px){.exp-arrow{display:none}}
 @media(max-width:980px){.dest-grid.five{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:860px){.dest-grid,.dest-grid.five,.exp-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:980px){.dest-grid.three{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:860px){.dest-grid,.dest-grid.five,.dest-grid.three,.exp-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.exp-grid{grid-template-columns:1fr}}
 @media(max-width:480px){.dest-card h4{font-size:1.2rem}}
 

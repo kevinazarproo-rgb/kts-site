@@ -336,6 +336,7 @@ a.svc-col:hover .svc-more{text-decoration:underline}
   .feature-duo .feature-img img{aspect-ratio:16/10;max-height:300px}
   .feature-duo .feature-txt p{max-width:none}
 }
+.spotlight .feature-img img{aspect-ratio:3/2;max-height:360px}
 
 /* sous-sections destination : villes & expériences */
 .dest-section{padding:clamp(2.5rem,5vw,4.5rem) 0}

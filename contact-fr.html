@@ -3,21 +3,49 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mentions l&eacute;gales — KTS Travel</title>
-<meta name="description" content="Tour-opérateurs, agences et organisateurs d'événements : revendez nos programmes clés en main sous votre marque, à tarifs nets, votre commission intég">
+<title>Nous contacter — KTS Travel</title>
+<meta name="description" content="Parlez à KTS Travel de votre prochain voyage ou événement en France. Notre équipe parisienne vous répond sous un jour ouvré.">
 <link rel="icon" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
+<style>
+  .contact-sec{padding:clamp(3rem,6vw,5.5rem) 0}
+  .contact-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
+  @media(max-width:860px){.contact-grid{grid-template-columns:1fr;gap:2.5rem}}
+  .contact-intro p{color:var(--muted);max-width:46ch;margin:1rem 0 2rem}
+  .contact-cards{display:flex;flex-direction:column;gap:1.4rem}
+  .ccard{display:flex;gap:1.1rem;align-items:flex-start}
+  .ccard svg{width:22px;height:22px;flex:none;margin-top:.2rem;stroke:var(--accent);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+  .ccard h5{font-family:var(--sans);font-weight:500;letter-spacing:.04em;margin:0 0 .15rem;font-size:.95rem}
+  .ccard p,.ccard a{color:var(--muted);font-size:.95rem;line-height:1.6;display:block;text-decoration:none}
+  .ccard a:hover{color:var(--accent)}
+  .contact-soc{display:flex;gap:.8rem;margin-top:2rem}
+  .contact-soc a{width:42px;height:42px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .35s var(--ease)}
+  .contact-soc a:hover{border-color:var(--accent)}
+  .contact-soc svg{width:18px;height:18px;stroke:var(--ink);fill:none;stroke-width:1.5}
+  .contact-soc a:hover svg{stroke:var(--accent)}
+  .cform{background:var(--paper-2);border:1px solid var(--line);border-radius:6px;padding:clamp(1.6rem,3vw,2.6rem)}
+  .cform .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  @media(max-width:520px){.cform .row{grid-template-columns:1fr}}
+  .field{display:flex;flex-direction:column;margin-bottom:1.1rem}
+  .field label{font-family:var(--sans);font-size:.72rem;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+  .field input,.field select,.field textarea{font-family:var(--sans);font-weight:300;font-size:1rem;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:.85rem .9rem;transition:border-color .3s var(--ease)}
+  .field textarea{resize:vertical;min-height:130px}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent)}
+  .cform .btn{display:inline-flex;align-items:center;gap:.6rem;background:var(--accent);color:#fff;font-family:var(--sans);font-weight:400;letter-spacing:.04em;border:none;border-radius:30px;padding:.95rem 2.4rem;cursor:pointer;transition:background .35s var(--ease)}
+  .cform .btn:hover{background:var(--accent-deep)}
+  .cform .note{font-size:.8rem;color:var(--muted);margin-top:1rem}
+</style>
 </head>
 <body>
 
 <header class="hero compact">
-  <div class="hero-bg"><img src="https://images.unsplash.com/photo-1431274172761-fca41d930114?auto=format&fit=crop&w=2400&q=80" onerror="this.onerror=null;this.src='assets/hero2.jpg'" alt="KTS Travel trade"></div>
+  <div class="hero-bg"><img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=2400&q=80" onerror="this.onerror=null;this.src='assets/hero1.jpg'" alt="Contacter KTS Travel à Paris"></div>
   <div class="hero-inner">
-    <div class="hero-kicker">Espace professionnels</div>
-    <h1>Professionnels</h1>
+    <div class="hero-kicker">Parlons-en</div>
+    <h1>Nous contacter</h1>
   </div>
 <nav class="nav" id="nav">
     <div class="nav-left util">
@@ -28,31 +56,69 @@
       <a href="tel:+33158366666" class="lbl-contact">+33 (0)1 58 36 66 66</a>
       <a class="nav-soc" href="https://www.instagram.com/kts_france/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
       <a class="nav-soc" href="https://www.linkedin.com/company/kts-tourisme-et-voyages/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10.5V17M7 7.2v.01M11 17v-3.5a2 2 0 014 0V17"/></svg></a>
-      <span class="nav-lang"><span class="active">FR</span><a href="mentions-legales.html" id="langEn">EN</a></span>
+      <span class="nav-lang"><span class="active">FR</span><a href="contact.html" id="langEn">EN</a></span>
     </div>
   </nav>
 </header>
 
 <main>
-  <section class="dest-intro">
-    <div class="wrap reveal">
-      <span class="eyebrow">KTS Travel</span>
-      <h2>Mentions l&eacute;gales</h2>
-      <p class="dest-lead">Informations l&eacute;gales relatives au site de KTS Travel.</p>
-    </div>
-  </section>
-  <section class="dest-section alt">
-    <div class="wrap reveal">
-      <div class="legal-body">
-        <h3>&Eacute;diteur du site</h3>
-        <p>KTS Tourisme et Voyage SARL &middot; 20 rue de Boulainvilliers, 75016 Paris &middot; +33 (0)1 58 36 66 66 &middot; groups@ktstravel.com &middot; Atout France IM075100068</p>
-        <p class="legal-note">&Agrave; compl&eacute;ter : capital social, num&eacute;ro RCS / SIRET, num&eacute;ro de TVA intracommunautaire, directeur de la publication.</p>
-        <h3>H&eacute;bergement</h3>
-        <p>Ce site est h&eacute;berg&eacute; par GitHub Pages (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, &Eacute;tats-Unis).</p>
-        <h3>Propri&eacute;t&eacute; intellectuelle</h3>
-        <p>L&rsquo;ensemble des contenus de ce site (textes, images, logo) est la propri&eacute;t&eacute; de KTS ou de ses partenaires. Toute reproduction sans autorisation est interdite.</p>
-        <h3>Donn&eacute;es personnelles</h3>
-        <p>Les informations transmises via les formulaires de contact sont utilis&eacute;es uniquement pour traiter votre demande. Conform&eacute;ment au RGPD, vous disposez d&rsquo;un droit d&rsquo;acc&egrave;s, de rectification et de suppression de vos donn&eacute;es en &eacute;crivant &agrave; groups@ktstravel.com.</p>
+  <div class="wrap"><nav class="breadcrumb"><a href="index-fr.html">Accueil</a> <span class="sep">&rsaquo;</span> Nous contacter</nav></div>
+
+  <section class="contact-sec">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="contact-intro reveal">
+          <span class="eyebrow">Nous vous écoutons</span>
+          <h2 class="serif" style="font-weight:300;font-size:clamp(2rem,4vw,2.8rem);line-height:1.1;margin:.6rem 0 0">Composons votre prochain voyage</h2>
+          <p>Parlez-nous de votre projet &mdash; un s&eacute;jour sur mesure, un voyage de groupe, une convention ou un incentive. Un conseiller d&eacute;di&eacute; vous r&eacute;pond sous un jour ouvr&eacute;.</p>
+          <div class="contact-cards">
+            <div class="ccard">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <div><h5>Nos bureaux</h5><p>20 rue de Boulainvilliers<br>75016 Paris, France</p></div>
+            </div>
+            <div class="ccard">
+              <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.6A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.6a2 2 0 01-.5 2.1L8.1 9.5a16 16 0 006 6l1.1-1.1a2 2 0 012.1-.5c.8.3 1.7.5 2.6.6a2 2 0 011.7 2z"/></svg>
+              <div><h5>Par t&eacute;l&eacute;phone</h5><a href="tel:+33158366666">+33 (0)1 58 36 66 66</a></div>
+            </div>
+            <div class="ccard">
+              <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+              <div><h5>Par e-mail</h5><a href="mailto:groups@ktstravel.com">groups@ktstravel.com</a></div>
+            </div>
+            <div class="ccard">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              <div><h5>Horaires</h5><p>Du lundi au vendredi, 9h &ndash; 19h (CET)</p></div>
+            </div>
+          </div>
+          <div class="contact-soc">
+            <a href="https://www.instagram.com/kts_france/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+            <a href="https://www.linkedin.com/company/kts-tourisme-et-voyages/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10.5V17M7 7.2v.01M11 17v-3.5a2 2 0 014 0V17"/></svg></a>
+          </div>
+        </div>
+
+        <form class="cform reveal" id="contactForm">
+          <div class="row">
+            <div class="field"><label for="cf-first">Pr&eacute;nom</label><input id="cf-first" name="first" type="text" required></div>
+            <div class="field"><label for="cf-last">Nom</label><input id="cf-last" name="last" type="text" required></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="cf-email">E-mail</label><input id="cf-email" name="email" type="email" required></div>
+            <div class="field"><label for="cf-phone">T&eacute;l&eacute;phone</label><input id="cf-phone" name="phone" type="tel"></div>
+          </div>
+          <div class="field">
+            <label for="cf-type">Type de projet</label>
+            <select id="cf-type" name="type">
+              <option>S&eacute;jour sur mesure</option>
+              <option>Voyage de groupe</option>
+              <option>MICE &amp; convention</option>
+              <option>Programme d'incentive</option>
+              <option>Voyage VIP</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="field"><label for="cf-msg">Votre message</label><textarea id="cf-msg" name="message" required></textarea></div>
+          <button type="submit" class="btn">Envoyer le message</button>
+          <p class="note">En envoyant ce message, vous acceptez d'&ecirc;tre recontact&eacute; par notre &eacute;quipe. Vos coordonn&eacute;es ne sont jamais partag&eacute;es.</p>
+        </form>
       </div>
     </div>
   </section>
@@ -133,7 +199,7 @@
       </nav>
       <div class="menu-lang">
         <span class="active">Français</span>
-        <a href="index.html" data-menu>English</a>
+        <a href="contact.html" data-menu>English</a>
       </div>
     </div>
     <div class="menu-panel" id="subDest">
@@ -151,5 +217,22 @@
 </div>
 
 <script src="assets/site.js"></script>
+<script>
+(function(){
+  var f=document.getElementById('contactForm');
+  if(!f)return;
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var g=function(id){return (document.getElementById(id)||{}).value||'';};
+    var subject='Contact — '+g('cf-type')+' — '+g('cf-first')+' '+g('cf-last');
+    var body='Nom : '+g('cf-first')+' '+g('cf-last')+'\n'
+      +'E-mail : '+g('cf-email')+'\n'
+      +'Téléphone : '+g('cf-phone')+'\n'
+      +'Projet : '+g('cf-type')+'\n\n'
+      +g('cf-msg');
+    window.location.href='mailto:groups@ktstravel.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+  });
+})();
+</script>
 </body>
 </html>

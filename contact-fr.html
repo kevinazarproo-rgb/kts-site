@@ -26,21 +26,21 @@
   .contact-soc a:hover{border-color:var(--accent)}
   .contact-soc svg{width:18px;height:18px;stroke:var(--ink);fill:none;stroke-width:1.5}
   .contact-soc a:hover svg{stroke:var(--accent)}
-  .cform{background:var(--paper-2);border:1px solid var(--line);border-radius:6px;padding:clamp(1.6rem,3vw,2.6rem)}
+  .cform{background:var(--accent);border:1px solid var(--accent);border-radius:6px;padding:clamp(1.6rem,3vw,2.6rem)}
   .cform .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
   @media(max-width:520px){.cform .row{grid-template-columns:1fr}}
   .field{display:flex;flex-direction:column;margin-bottom:1.1rem}
   .field[hidden]{display:none}
-  .field label{font-family:var(--sans);font-size:.72rem;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+  .field label{font-family:var(--sans);font-size:.72rem;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.82);margin-bottom:.5rem}
   .field input,.field select,.field textarea{font-family:var(--sans);font-weight:300;font-size:1rem;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:.85rem .9rem;transition:border-color .3s var(--ease)}
   .field textarea{resize:vertical;min-height:130px}
   .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent)}
 .phone-row{display:flex;gap:.5rem}
   .phone-row select{flex:0 0 44%;max-width:44%}
   .phone-row input{flex:1 1 auto;min-width:0;width:100%}
-  .cform .btn{display:inline-flex;align-items:center;gap:.6rem;background:var(--accent);color:#fff;font-family:var(--sans);font-weight:400;letter-spacing:.04em;border:none;border-radius:30px;padding:.95rem 2.4rem;cursor:pointer;transition:background .35s var(--ease)}
-  .cform .btn:hover{background:var(--accent-deep)}
-  .cform .note{font-size:.8rem;color:var(--muted);margin-top:1rem}
+  .cform .btn{display:inline-flex;align-items:center;gap:.6rem;background:#fff;color:var(--accent);font-family:var(--sans);font-weight:500;letter-spacing:.04em;border:none;border-radius:30px;padding:.95rem 2.4rem;cursor:pointer;transition:background .35s var(--ease)}
+  .cform .btn:hover{background:#e9eef5}
+  .cform .note{font-size:.8rem;color:rgba(255,255,255,.72);margin-top:1rem}
 </style>
 </head>
 <body>

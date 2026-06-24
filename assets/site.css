@@ -409,6 +409,13 @@ a.svc-col:hover .svc-more{text-decoration:underline}
 .footer-col a:hover{color:#fff;text-decoration:underline}
 .footer-creds{margin-top:2.4rem;padding-top:1.4rem;border-top:1px solid rgba(255,255,255,.28);font-family:var(--sans);font-weight:300;font-size:.76rem;letter-spacing:.06em;color:rgba(255,255,255,.85)}
 .footer-bottom{margin-top:.8rem;font-family:var(--sans);font-weight:300;font-size:.74rem;letter-spacing:.06em;color:rgba(255,255,255,.7)}
+.footer-legal{margin-top:1rem;display:flex;flex-wrap:wrap;gap:.4rem 1.6rem;font-family:var(--sans);font-size:.74rem;letter-spacing:.05em}
+.footer-legal a{color:rgba(255,255,255,.7);transition:color .25s}
+.footer-legal a:hover{color:#fff}
+.legal-body{max-width:760px}
+.legal-body h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.2rem,2.2vw,1.5rem);margin:2rem 0 .7rem;color:var(--ink)}
+.legal-body p{color:var(--muted);line-height:1.8;margin-bottom:.6rem}
+.legal-body .legal-note{font-size:.85rem;font-style:italic;color:var(--accent)}
 @media(max-width:860px){.footer-grid{grid-template-columns:1fr 1fr;gap:1.8rem 1.4rem}}
 @media(max-width:560px){.footer-grid{grid-template-columns:1fr}}
 

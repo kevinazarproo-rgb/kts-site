@@ -667,3 +667,4 @@ a.svc-col:hover .svc-more{text-decoration:underline}
 .mac-bottom{position:relative;height:14px;width:116%;left:-8%;background:linear-gradient(#dcdce0,#a7a7ad);border-radius:0 0 13px 13px}
 .mac-bottom::after{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:100px;height:7px;background:#9596a0;border-radius:0 0 9px 9px}
 @media(max-width:560px){.mac-bottom{width:108%;left:-4%}}
+.trade-shot{width:100%;max-width:640px;display:block;margin:0 auto;height:auto}

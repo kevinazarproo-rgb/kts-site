@@ -659,3 +659,11 @@ a.svc-col:hover .svc-more{text-decoration:underline}
 .fm-div{fill:none;stroke:#fff;stroke-width:2;opacity:.85}
 
 .francemap-wrap img{width:100%;height:auto;display:block;border-radius:4px}
+
+.macbook{max-width:560px;margin:0 auto}
+.mac-screen{background:#0d0d0f;border:2px solid #1c1c1f;border-radius:16px;padding:14px;position:relative;box-shadow:0 30px 70px rgba(0,0,0,.4)}
+.mac-screen::before{content:'';position:absolute;top:7px;left:50%;transform:translateX(-50%);width:6px;height:6px;border-radius:50%;background:#2c2c30;z-index:2}
+.mac-screen .browser{box-shadow:none}
+.mac-bottom{position:relative;height:14px;width:116%;left:-8%;background:linear-gradient(#dcdce0,#a7a7ad);border-radius:0 0 13px 13px}
+.mac-bottom::after{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:100px;height:7px;background:#9596a0;border-radius:0 0 9px 9px}
+@media(max-width:560px){.mac-bottom{width:108%;left:-4%}}

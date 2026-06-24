@@ -30,6 +30,7 @@
   .cform .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
   @media(max-width:520px){.cform .row{grid-template-columns:1fr}}
   .field{display:flex;flex-direction:column;margin-bottom:1.1rem}
+  .field[hidden]{display:none}
   .field label{font-family:var(--sans);font-size:.72rem;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
   .field input,.field select,.field textarea{font-family:var(--sans);font-weight:300;font-size:1rem;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:.85rem .9rem;transition:border-color .3s var(--ease)}
   .field textarea{resize:vertical;min-height:130px}

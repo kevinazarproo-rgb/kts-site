@@ -92,20 +92,19 @@
   <section class="services" style="padding-top:clamp(3rem,6vw,5rem)">
     <div class="wrap">
       <div class="head reveal"><span class="eyebrow">Exp&eacute;riences</span><h2>L&rsquo;art de vivre alsacien</h2></div>
-      <div class="exp3 three reveal">
-        <article class="exp3-card">
-          <div class="exp3-img"><img src="https://images.unsplash.com/photo-1762031732167-5c7a542805b6?auto=format&fit=crop&w=1000&q=70" onerror="this.onerror=null;this.src='assets/hero1.jpg'" alt="La Route des Vins &amp; grands crus"></div>
-          <div class="exp3-txt"><span class="eyebrow">Vignobles</span><h3>La Route des Vins &amp; grands crus</h3><p>Nous organisons des d&eacute;gustations priv&eacute;es chez les vignerons, des visites de caves familiales et des d&eacute;jeuners dans les vignes le long de l&rsquo;une des plus anciennes routes des vins de France. Les 51 grands crus d&rsquo;Alsace &mdash; riesling, gewurztraminer, pinot gris &mdash; vous ouvrent leurs portes. De Marlenheim &agrave; Thann, chaque village a son domaine et son caract&egrave;re.</p></div>
-        </article>
-        <article class="exp3-card">
-          <div class="exp3-img"><img src="https://images.pexels.com/photos/19059248/pexels-photo-19059248.jpeg?auto=compress&cs=tinysrgb&w=1000" onerror="this.onerror=null;this.src='assets/hero2.jpg'" alt="Villages de conte"></div>
-          <div class="exp3-txt"><span class="eyebrow">Villages</span><h3>Villages de conte</h3><p>Colmar, Riquewihr et Eguisheim semblent sortis d&rsquo;un conte, avec leurs maisons &agrave; colombages, leurs ruelles fleuries et leurs pav&eacute;s. Nous organisons des balades priv&eacute;es et des visites en dehors des heures d&rsquo;affluence, ainsi que des d&eacute;gustations dans les domaines familiaux qui jalonnent la Route des Vins.</p></div>
-        </article>
-        <article class="exp3-card">
-          <div class="exp3-img"><img src="https://images.unsplash.com/photo-1701943523178-98fc2e24f22d?auto=format&fit=crop&w=1000&q=70" onerror="this.onerror=null;this.src='assets/a2.jpg'" alt="Gastronomie alsacienne"></div>
-          <div class="exp3-txt"><span class="eyebrow">Art de vivre</span><h3>Gastronomie alsacienne</h3><p>De la winstub conviviale &agrave; la table &eacute;toil&eacute;e, l&rsquo;Alsace est une terre de cuisine g&eacute;n&eacute;reuse &mdash; choucroute, tarte flamb&eacute;e, foie gras et kouglof. Nous vous ouvrons les portes des plus belles tables et caves de la r&eacute;gion, chaque plat accord&eacute; aux grands vins blancs d&rsquo;Alsace.</p></div>
-        </article>
+      <div class="exp-carousel">
+        <button class="exp-arrow prev" aria-label="Previous" onclick="document.getElementById('expAlsace').scrollBy({left:-340,behavior:'smooth'})"><svg viewBox="0 0 14 14"><path d="M9 2L4 7l5 5"/></svg></button>
+        <div class="exp-track" id="expAlsace">
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=Alsace"><div class="ph"><img src="https://images.unsplash.com/photo-1762031732167-5c7a542805b6?auto=format&fit=crop&w=1000&q=70" onerror="this.onerror=null;this.src='assets/a1.jpg'" alt="La Route des Vins &amp; grands crus"></div><h4>La Route des Vins &amp; grands crus</h4></a>
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=Alsace"><div class="ph"><img src="https://images.pexels.com/photos/19059248/pexels-photo-19059248.jpeg?auto=compress&cs=tinysrgb&w=1000" onerror="this.onerror=null;this.src='assets/a1.jpg'" alt="Villages de conte"></div><h4>Villages de conte</h4></a>
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=Alsace"><div class="ph"><img src="https://images.unsplash.com/photo-1701943523178-98fc2e24f22d?auto=format&fit=crop&w=1000&q=70" onerror="this.onerror=null;this.src='assets/a1.jpg'" alt="Gastronomie alsacienne"></div><h4>Gastronomie alsacienne</h4></a>
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=Alsace"><div class="ph"><img src="https://images.unsplash.com/photo-1599372176713-97bc5c2bd4a5?auto=format&fit=crop&w=900&q=70" onerror="this.onerror=null;this.src='assets/a1.jpg'" alt="La Petite Venise de Colmar"></div><h4>La Petite Venise de Colmar</h4></a>
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=Alsace"><div class="ph"><img src="https://images.unsplash.com/photo-1609013104802-5c48a4781007?auto=format&fit=crop&w=900&q=70" onerror="this.onerror=null;this.src='assets/a1.jpg'" alt="La cath&eacute;drale de Strasbourg"></div><h4>La cath&eacute;drale de Strasbourg</h4></a>
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=Alsace"><div class="ph"><img src="https://images.pexels.com/photos/19661562/pexels-photo-19661562.jpeg?auto=compress&cs=tinysrgb&w=1000" onerror="this.onerror=null;this.src='assets/a1.jpg'" alt="Soir&eacute;e au march&eacute; de No&euml;l"></div><h4>Soir&eacute;e au march&eacute; de No&euml;l</h4></a>
+        </div>
+        <button class="exp-arrow next" aria-label="Next" onclick="document.getElementById('expAlsace').scrollBy({left:340,behavior:'smooth'})"><svg viewBox="0 0 14 14"><path d="M5 2l5 5-5 5"/></svg></button>
       </div>
+      <div class="dest-cta reveal"><a class="btn-outline" href="mailto:groups@ktstravel.com?subject=Alsace">Composons votre voyage en Alsace</a></div>
     </div>
   </section>
 
@@ -131,19 +130,6 @@
     </div>
   </section>
 
-  <section class="sig-section">
-    <div class="wrap">
-      <div class="sec-head reveal"><span class="eyebrow">Sur mesure</span><h2>Quelques exp&eacute;riences signature</h2></div>
-      <div class="sig-grid reveal">
-        <div class="sig-card"><span class="sig-num">1</span><p>D&eacute;gustation priv&eacute;e sur la Route des Vins</p></div>
-        <div class="sig-card"><span class="sig-num">2</span><p>Balade guid&eacute;e dans la Petite Venise de Colmar</p></div>
-        <div class="sig-card"><span class="sig-num">3</span><p>Visite d&rsquo;une cave grand cru avec le vigneron</p></div>
-        <div class="sig-card"><span class="sig-num">4</span><p>Visite priv&eacute;e de la cath&eacute;drale de Strasbourg</p></div>
-        <div class="sig-card"><span class="sig-num">5</span><p>Soir&eacute;e march&eacute; de No&euml;l hors foule</p></div>
-      </div>
-      <div class="dest-cta reveal"><a class="btn-outline" href="mailto:groups@ktstravel.com?subject=Alsace">Composer mon s&eacute;jour en Alsace</a></div>
-    </div>
-  </section>
 
   <section class="quote">
     <div class="quote-bg"><img src="https://images.unsplash.com/photo-1502132043341-412103586212?auto=format&fit=crop&w=2400&q=80" onerror="this.onerror=null;this.src='assets/a1.jpg'" alt=""></div>

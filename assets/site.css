@@ -293,7 +293,10 @@ a.svc-col:hover .svc-more{text-decoration:underline}
 .svc-prem{padding:clamp(3rem,6vw,5.5rem) 0}
 .svc-prem .blk-head{text-align:center;margin-bottom:clamp(2rem,4vw,3.5rem)}
 .svc-premium{display:grid;gap:clamp(1.8rem,5vw,5rem)}
-@media(min-width:861px){.svc-premium{grid-template-columns:.9fr 1.15fr;align-items:start}}
+@media(min-width:861px){.svc-premium{grid-template-columns:.8fr 1.05fr .95fr;align-items:start}}
+.svc-media{min-height:240px}
+.svc-media img{width:100%;height:100%;max-height:430px;object-fit:cover;display:none;border-radius:4px}
+#svc1:checked~.svc-media .svc-m1,#svc2:checked~.svc-media .svc-m2,#svc3:checked~.svc-media .svc-m3{display:block}
 .svc-premium>input{position:absolute;width:0;height:0;opacity:0;pointer-events:none}
 .svc-cats{display:flex;flex-direction:column}
 .svc-cat{display:flex;align-items:baseline;gap:1rem;cursor:pointer;font-family:var(--serif);font-weight:300;font-size:clamp(1.35rem,2.4vw,1.95rem);line-height:1.2;color:var(--muted);opacity:.45;transition:opacity .3s,color .3s,border-color .3s;border-left:2px solid var(--line);padding:.85rem 0 .85rem 1.4rem}

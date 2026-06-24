@@ -580,6 +580,21 @@ a.svc-col:hover .svc-more{text-decoration:underline}
 .login-field{width:100%;background:#fff;border:1px solid var(--line);border-radius:6px;padding:.72rem .9rem;font-size:.8rem;color:var(--muted);text-align:left}
 .login-btn{width:100%;background:var(--accent);color:#fff;border-radius:6px;padding:.78rem;font-family:var(--sans);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
 .login-link{font-size:.72rem;color:var(--accent);letter-spacing:.04em}
+.login-real{display:grid;grid-template-columns:1fr 1fr}
+@media(max-width:560px){.login-real{grid-template-columns:1fr}}
+.lr-visual{position:relative;background-size:cover;background-position:center;color:#fff;padding:1.4rem;display:flex;flex-direction:column;justify-content:space-between;min-height:270px}
+.lr-visual::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,20,35,.25),rgba(8,20,35,.6))}
+.lr-visual>*{position:relative;z-index:1}
+.lr-visual-txt strong{display:block;font-family:var(--serif);font-weight:400;font-size:1.55rem;line-height:1.1}
+.lr-visual-txt span{font-size:.78rem;opacity:.92}
+.lr-create small{display:block;font-weight:600;font-size:.76rem;margin-bottom:.5rem}
+.lr-ghost{display:inline-block;border:1px solid rgba(255,255,255,.75);border-radius:4px;padding:.42rem .95rem;font-size:.7rem;letter-spacing:.04em}
+.lr-form{padding:1.5rem 1.4rem;display:flex;flex-direction:column;gap:.45rem;background:#fff}
+.lr-form label{font-size:.68rem;font-weight:600;color:var(--ink);letter-spacing:.03em;margin-top:.3rem}
+.lr-remember{display:flex;align-items:center;gap:.5rem;font-size:.74rem;color:var(--muted);margin:.45rem 0}
+.lr-toggle{width:30px;height:16px;border-radius:20px;background:var(--teal);position:relative;flex:none}
+.lr-toggle::after{content:'';position:absolute;right:2px;top:2px;width:12px;height:12px;border-radius:50%;background:#fff}
+.lr-form .login-btn{margin-top:.4rem}
 
 /* ---- bloc générique : en-tête centré ---- */
 .blk-head{text-align:center;max-width:60ch;margin:0 auto clamp(2rem,4vw,3rem)}

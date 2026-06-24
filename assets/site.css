@@ -573,6 +573,8 @@ a.svc-col:hover .svc-more{text-decoration:underline}
 .ta-steps li{counter-increment:ta;display:flex;gap:1rem;align-items:flex-start;color:var(--muted);line-height:1.65}
 .ta-steps li::before{content:counter(ta,decimal-leading-zero);font-family:var(--sans);font-size:.74rem;letter-spacing:.08em;color:var(--accent);border:1px solid var(--accent);border-radius:50%;width:2rem;height:2rem;min-width:2rem;display:flex;align-items:center;justify-content:center}
 .ta-steps b{color:var(--ink);font-weight:500}
+.ta-cta{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2rem}
+.ta-cta a{font-size:.78rem;padding:.85rem 1.4rem}
 .login-screen{padding:1.9rem 1.6rem;display:flex;flex-direction:column;gap:.8rem;align-items:center;text-align:center;background:var(--paper-2)}
 .login-screen .ls-logo{height:30px;margin-bottom:.3rem}
 .login-screen h5{font-family:var(--serif);font-weight:400;font-size:1.25rem;color:var(--ink)}

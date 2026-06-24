@@ -92,20 +92,19 @@
   <section class="services" style="padding-top:clamp(3rem,6vw,5rem)">
     <div class="wrap">
       <div class="head reveal"><span class="eyebrow">Experiences</span><h2>The Alsatian art of living</h2></div>
-      <div class="exp3 three reveal">
-        <article class="exp3-card">
-          <div class="exp3-img"><img src="https://images.unsplash.com/photo-1762031732167-5c7a542805b6?auto=format&fit=crop&w=1000&q=70" onerror="this.onerror=null;this.src='assets/hero1.jpg'" alt="The Wine Route &amp; grands crus"></div>
-          <div class="exp3-txt"><span class="eyebrow">Vineyards</span><h3>The Wine Route &amp; grands crus</h3><p>We arrange private tastings with the winemakers, visits to family cellars and lunches among the vines along one of France's oldest wine routes. The 51 Alsace grands crus &mdash; Riesling, Gewurztraminer, Pinot Gris &mdash; open their doors to you. From Marlenheim to Thann, every village has its own estate and its own character.</p></div>
-        </article>
-        <article class="exp3-card">
-          <div class="exp3-img"><img src="https://images.pexels.com/photos/19059248/pexels-photo-19059248.jpeg?auto=compress&cs=tinysrgb&w=1000" onerror="this.onerror=null;this.src='assets/hero2.jpg'" alt="Storybook villages"></div>
-          <div class="exp3-txt"><span class="eyebrow">Villages</span><h3>Storybook villages</h3><p>Colmar, Riquewihr and Eguisheim look straight out of a fairy tale, with their half-timbered houses, flower-filled streets and cobbled lanes. We arrange private strolls and after-hours visits, away from the crowds, and tastings at the family estates that line the Wine Route.</p></div>
-        </article>
-        <article class="exp3-card">
-          <div class="exp3-img"><img src="https://images.unsplash.com/photo-1701943523178-98fc2e24f22d?auto=format&fit=crop&w=1000&q=70" onerror="this.onerror=null;this.src='assets/a2.jpg'" alt="Alsatian gastronomy"></div>
-          <div class="exp3-txt"><span class="eyebrow">Art of living</span><h3>Alsatian gastronomy</h3><p>From the friendly winstub to the Michelin-starred table, Alsace is a land of generous cuisine &mdash; choucroute, tarte flamb&eacute;e, foie gras and kouglof. We open the doors of the region's finest tables and cellars, each dish paired with the great Alsatian white wines.</p></div>
-        </article>
+      <div class="exp-carousel">
+        <button class="exp-arrow prev" aria-label="Previous" onclick="document.getElementById('expAlsace').scrollBy({left:-340,behavior:'smooth'})"><svg viewBox="0 0 14 14"><path d="M9 2L4 7l5 5"/></svg></button>
+        <div class="exp-track" id="expAlsace">
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=Alsace"><div class="ph"><img src="https://images.unsplash.com/photo-1762031732167-5c7a542805b6?auto=format&fit=crop&w=1000&q=70" onerror="this.onerror=null;this.src='assets/a1.jpg'" alt="The Wine Route &amp; grands crus"></div><h4>The Wine Route &amp; grands crus</h4></a>
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=Alsace"><div class="ph"><img src="https://images.pexels.com/photos/19059248/pexels-photo-19059248.jpeg?auto=compress&cs=tinysrgb&w=1000" onerror="this.onerror=null;this.src='assets/a1.jpg'" alt="Storybook villages"></div><h4>Storybook villages</h4></a>
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=Alsace"><div class="ph"><img src="https://images.unsplash.com/photo-1701943523178-98fc2e24f22d?auto=format&fit=crop&w=1000&q=70" onerror="this.onerror=null;this.src='assets/a1.jpg'" alt="Alsatian gastronomy"></div><h4>Alsatian gastronomy</h4></a>
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=Alsace"><div class="ph"><img src="https://images.unsplash.com/photo-1599372176713-97bc5c2bd4a5?auto=format&fit=crop&w=900&q=70" onerror="this.onerror=null;this.src='assets/a1.jpg'" alt="Colmar&rsquo;s Little Venice"></div><h4>Colmar&rsquo;s Little Venice</h4></a>
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=Alsace"><div class="ph"><img src="https://images.unsplash.com/photo-1609013104802-5c48a4781007?auto=format&fit=crop&w=900&q=70" onerror="this.onerror=null;this.src='assets/a1.jpg'" alt="Strasbourg cathedral"></div><h4>Strasbourg cathedral</h4></a>
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=Alsace"><div class="ph"><img src="https://images.pexels.com/photos/19661562/pexels-photo-19661562.jpeg?auto=compress&cs=tinysrgb&w=1000" onerror="this.onerror=null;this.src='assets/a1.jpg'" alt="Christmas market evening"></div><h4>Christmas market evening</h4></a>
+        </div>
+        <button class="exp-arrow next" aria-label="Next" onclick="document.getElementById('expAlsace').scrollBy({left:340,behavior:'smooth'})"><svg viewBox="0 0 14 14"><path d="M5 2l5 5-5 5"/></svg></button>
       </div>
+      <div class="dest-cta reveal"><a class="btn-outline" href="mailto:groups@ktstravel.com?subject=Alsace">Compose my Alsace journey</a></div>
     </div>
   </section>
 
@@ -131,19 +130,6 @@
     </div>
   </section>
 
-  <section class="sig-section">
-    <div class="wrap">
-      <div class="sec-head reveal"><span class="eyebrow">Bespoke</span><h2>A few signature experiences</h2></div>
-      <div class="sig-grid reveal">
-        <div class="sig-card"><span class="sig-num">1</span><p>Private tasting on the Alsace Wine Route</p></div>
-        <div class="sig-card"><span class="sig-num">2</span><p>Guided stroll through Colmar's Little Venice</p></div>
-        <div class="sig-card"><span class="sig-num">3</span><p>Visit of a grand cru cellar with the winemaker</p></div>
-        <div class="sig-card"><span class="sig-num">4</span><p>Private tour of Strasbourg cathedral</p></div>
-        <div class="sig-card"><span class="sig-num">5</span><p>Christmas market evening away from the crowds</p></div>
-      </div>
-      <div class="dest-cta reveal"><a class="btn-outline" href="mailto:groups@ktstravel.com?subject=Alsace">Compose my Alsace journey</a></div>
-    </div>
-  </section>
 
   <section class="quote">
     <div class="quote-bg"><img src="https://images.unsplash.com/photo-1502132043341-412103586212?auto=format&fit=crop&w=2400&q=80" onerror="this.onerror=null;this.src='assets/a1.jpg'" alt=""></div>

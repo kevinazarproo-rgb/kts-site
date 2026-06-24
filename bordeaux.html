@@ -90,20 +90,19 @@
   <section class="services" style="padding-top:clamp(3rem,6vw,5rem)">
     <div class="wrap">
       <div class="head reveal"><span class="eyebrow">Experiences</span><h2>The Bordeaux art of living</h2></div>
-      <div class="exp3 three reveal">
-        <article class="exp3-card">
-          <div class="exp3-img"><img src="https://images.unsplash.com/photo-1541019481224-f8ade86c0cdf?auto=format&fit=crop&w=1000&q=70" onerror="this.onerror=null;this.src='assets/a2.jpg'" alt="Grands crus &amp; ch&acirc;teau visits"></div>
-          <div class="exp3-txt"><span class="eyebrow">Ch&acirc;teaux</span><h3>Grands crus &amp; ch&acirc;teau visits</h3><p>We arrange private tastings and tours of classified-growth ch&acirc;teaux, guided by the cellar masters and owners themselves. From the M&eacute;doc to Saint-&Eacute;milion, you taste rare vintages straight from the barrel and discover how the world&rsquo;s greatest wines are made.</p></div>
-        </article>
-        <article class="exp3-card">
-          <div class="exp3-img"><img src="https://images.pexels.com/photos/6377688/pexels-photo-6377688.jpeg?auto=compress&cs=tinysrgb&w=1000" onerror="this.onerror=null;this.src='assets/a2.jpg'" alt="Saint-&Eacute;milion &amp; wine villages"></div>
-          <div class="exp3-txt"><span class="eyebrow">Villages</span><h3>Saint-&Eacute;milion &amp; wine villages</h3><p>We explore the medieval lanes of Saint-&Eacute;milion, its underground monolithic church and the surrounding estates. Private cellar visits, tastings with the winemakers and lunches among the vines, far from the crowds.</p></div>
-        </article>
-        <article class="exp3-card">
-          <div class="exp3-img"><img src="https://images.unsplash.com/photo-1662114256620-3b10b8ed0875?auto=format&fit=crop&w=1000&q=70" onerror="this.onerror=null;this.src='assets/a2.jpg'" alt="Bordeaux, the elegant city"></div>
-          <div class="exp3-txt"><span class="eyebrow">Art of living</span><h3>The city &amp; its art de vivre</h3><p>Beyond the vineyards, Bordeaux is a city to savour: the 18th-century facades and the Place de la Bourse, the Cit&eacute; du Vin, lively markets and Michelin tables. We arrange private city tours, gourmet experiences and a riverside dinner in the elegant heart of the Port of the Moon.</p></div>
-        </article>
+      <div class="exp-carousel">
+        <button class="exp-arrow prev" aria-label="Previous" onclick="document.getElementById('expBordeaux').scrollBy({left:-340,behavior:'smooth'})"><svg viewBox="0 0 14 14"><path d="M9 2L4 7l5 5"/></svg></button>
+        <div class="exp-track" id="expBordeaux">
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=Bordeaux"><div class="ph"><img src="https://images.unsplash.com/photo-1541019481224-f8ade86c0cdf?auto=format&fit=crop&w=1000&q=70" onerror="this.onerror=null;this.src='assets/a2.jpg'" alt="Grands crus &amp; ch&acirc;teau visits"></div><h4>Grands crus &amp; ch&acirc;teau visits</h4></a>
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=Bordeaux"><div class="ph"><img src="https://images.pexels.com/photos/6377688/pexels-photo-6377688.jpeg?auto=compress&cs=tinysrgb&w=1000" onerror="this.onerror=null;this.src='assets/a2.jpg'" alt="Saint-&Eacute;milion &amp; wine villages"></div><h4>Saint-&Eacute;milion &amp; wine villages</h4></a>
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=Bordeaux"><div class="ph"><img src="https://images.unsplash.com/photo-1662114256620-3b10b8ed0875?auto=format&fit=crop&w=1000&q=70" onerror="this.onerror=null;this.src='assets/a2.jpg'" alt="The city &amp; its art de vivre"></div><h4>The city &amp; its art de vivre</h4></a>
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=Bordeaux"><div class="ph"><img src="https://images.pexels.com/photos/9729432/pexels-photo-9729432.jpeg?auto=compress&cs=tinysrgb&w=900" onerror="this.onerror=null;this.src='assets/a2.jpg'" alt="Oyster lunch on the Arcachon bay"></div><h4>Oyster lunch on the Arcachon bay</h4></a>
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=Bordeaux"><div class="ph"><img src="https://images.pexels.com/photos/5085960/pexels-photo-5085960.jpeg?auto=compress&cs=tinysrgb&w=900" onerror="this.onerror=null;this.src='assets/a2.jpg'" alt="Fine-wine dinner with a sommelier"></div><h4>Fine-wine dinner with a sommelier</h4></a>
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=Bordeaux"><div class="ph"><img src="https://images.unsplash.com/photo-1632986852535-f15e9a6df5d6?auto=format&fit=crop&w=1000&q=70" onerror="this.onerror=null;this.src='assets/a2.jpg'" alt="The Dune du Pilat at sunset"></div><h4>The Dune du Pilat at sunset</h4></a>
+        </div>
+        <button class="exp-arrow next" aria-label="Next" onclick="document.getElementById('expBordeaux').scrollBy({left:340,behavior:'smooth'})"><svg viewBox="0 0 14 14"><path d="M5 2l5 5-5 5"/></svg></button>
       </div>
+      <div class="dest-cta reveal"><a class="btn-outline" href="mailto:groups@ktstravel.com?subject=Bordeaux">Compose my Bordeaux journey</a></div>
     </div>
   </section>
 
@@ -129,19 +128,6 @@
     </div>
   </section>
 
-  <section class="sig-section">
-    <div class="wrap">
-      <div class="sec-head reveal"><span class="eyebrow">Bespoke</span><h2>A few signature experiences</h2></div>
-      <div class="sig-grid reveal">
-        <div class="sig-card"><span class="sig-num">1</span><p>Tasting at a grand cru class&eacute; ch&acirc;teau with the cellar master</p></div>
-        <div class="sig-card"><span class="sig-num">2</span><p>Private tour of Saint-&Eacute;milion and its monolithic cellars</p></div>
-        <div class="sig-card"><span class="sig-num">3</span><p>Oyster lunch on the Arcachon bay</p></div>
-        <div class="sig-card"><span class="sig-num">4</span><p>Fine-wine dinner with a Bordeaux sommelier</p></div>
-        <div class="sig-card"><span class="sig-num">5</span><p>The Dune du Pilat at sunset</p></div>
-      </div>
-      <div class="dest-cta reveal"><a class="btn-outline" href="mailto:groups@ktstravel.com?subject=Bordeaux">Compose my Bordeaux journey</a></div>
-    </div>
-  </section>
 
   <section class="quote">
     <div class="quote-bg"><img src="https://images.pexels.com/photos/30732706/pexels-photo-30732706.jpeg?auto=compress&cs=tinysrgb&w=2400" style="object-position:center 18%" onerror="this.onerror=null;this.src='assets/a2.jpg'" alt=""></div>

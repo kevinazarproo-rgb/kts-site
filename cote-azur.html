@@ -90,20 +90,20 @@
   <section class="services" style="padding-top:clamp(3rem,6vw,5rem)">
     <div class="wrap">
       <div class="head reveal"><span class="eyebrow">Experiences</span><h2>The Riviera art of living</h2></div>
-      <div class="exp3 three reveal">
-        <article class="exp3-card">
-          <div class="exp3-img"><img src="https://images.pexels.com/photos/9650653/pexels-photo-9650653.jpeg?auto=compress&cs=tinysrgb&w=1000" onerror="this.onerror=null;this.src='assets/hero1.jpg'" alt="Yachts &amp; secret coves"></div>
-          <div class="exp3-txt"><span class="eyebrow">Sea</span><h3>Yachts &amp; secret coves</h3><p>A day at sea aboard a private yacht: swimming stops in quiet coves, lunch on board and the coastline seen from the water. We charter the boat, plan the route along the prettiest bays and can arrange a crew and an on-board chef.</p></div>
-        </article>
-        <article class="exp3-card">
-          <div class="exp3-img"><img src="https://images.pexels.com/photos/8336589/pexels-photo-8336589.jpeg?auto=compress&cs=tinysrgb&w=1000" onerror="this.onerror=null;this.src='assets/a1.jpg'" alt="Festivals &amp; exclusive evenings"></div>
-          <div class="exp3-txt"><span class="eyebrow">Glamour</span><h3>Festivals &amp; exclusive evenings</h3><p>Cannes Film Festival, the Monaco Grand Prix, gala dinners: we secure your access to the Riviera's most exclusive events and tables &mdash; grandstand seats, private boxes and reservations that are usually out of reach.</p></div>
-        </article>
-        <article class="exp3-card">
-          <div class="exp3-img"><img src="https://images.pexels.com/photos/32457879/pexels-photo-32457879.jpeg?auto=compress&cs=tinysrgb&w=1000" onerror="this.onerror=null;this.src='assets/a2.jpg'" alt="Palaces &amp; private villas"></div>
-          <div class="exp3-txt"><span class="eyebrow">Stay</span><h3>Palaces &amp; private villas</h3><p>Sea-view suites in the great palace hotels, or a private villa in the hills with dedicated staff and concierge service. We select the address that suits your party and take care of every detail of the stay.</p></div>
-        </article>
+      <div class="exp-carousel">
+        <button class="exp-arrow prev" aria-label="Previous" onclick="document.getElementById('expCote').scrollBy({left:-340,behavior:'smooth'})"><svg viewBox="0 0 14 14"><path d="M9 2L4 7l5 5"/></svg></button>
+        <div class="exp-track" id="expCote">
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=French%20Riviera"><div class="ph"><img src="https://images.pexels.com/photos/9650653/pexels-photo-9650653.jpeg?auto=compress&cs=tinysrgb&w=1000" onerror="this.onerror=null;this.src='assets/hero2.jpg'" alt="Yachts &amp; secret coves"></div><h4>Yachts &amp; secret coves</h4></a>
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=French%20Riviera"><div class="ph"><img src="https://images.pexels.com/photos/8336589/pexels-photo-8336589.jpeg?auto=compress&cs=tinysrgb&w=1000" onerror="this.onerror=null;this.src='assets/hero2.jpg'" alt="Festivals &amp; exclusive evenings"></div><h4>Festivals &amp; exclusive evenings</h4></a>
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=French%20Riviera"><div class="ph"><img src="https://images.pexels.com/photos/32457879/pexels-photo-32457879.jpeg?auto=compress&cs=tinysrgb&w=1000" onerror="this.onerror=null;this.src='assets/hero2.jpg'" alt="Palaces &amp; private villas"></div><h4>Palaces &amp; private villas</h4></a>
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=French%20Riviera"><div class="ph"><img src="https://images.pexels.com/photos/34123285/pexels-photo-34123285.jpeg?auto=compress&cs=tinysrgb&w=900" onerror="this.onerror=null;this.src='assets/hero2.jpg'" alt="Evening at the Monte-Carlo Casino"></div><h4>Evening at the Monte-Carlo Casino</h4></a>
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=French%20Riviera"><div class="ph"><img src="https://images.pexels.com/photos/13820051/pexels-photo-13820051.jpeg?auto=compress&cs=tinysrgb&w=800" onerror="this.onerror=null;this.src='assets/hero2.jpg'" alt="Villa Ephrussi de Rothschild"></div><h4>Villa Ephrussi de Rothschild</h4></a>
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=French%20Riviera"><div class="ph"><img src="https://images.pexels.com/photos/28602927/pexels-photo-28602927.jpeg?auto=compress&cs=tinysrgb&w=900" onerror="this.onerror=null;this.src='assets/hero2.jpg'" alt="Helicopter over the Baie des Anges"></div><h4>Helicopter over the Baie des Anges</h4></a>
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=French%20Riviera"><div class="ph"><img src="https://images.pexels.com/photos/6782238/pexels-photo-6782238.jpeg?auto=compress&cs=tinysrgb&w=900" onerror="this.onerror=null;this.src='assets/hero2.jpg'" alt="Michelin dinner in Saint-Tropez"></div><h4>Michelin dinner in Saint-Tropez</h4></a>
+        </div>
+        <button class="exp-arrow next" aria-label="Next" onclick="document.getElementById('expCote').scrollBy({left:340,behavior:'smooth'})"><svg viewBox="0 0 14 14"><path d="M5 2l5 5-5 5"/></svg></button>
       </div>
+      <div class="dest-cta reveal"><a class="btn-outline" href="mailto:groups@ktstravel.com?subject=French%20Riviera">Compose my Riviera journey</a></div>
     </div>
   </section>
 
@@ -129,19 +129,6 @@
     </div>
   </section>
 
-  <section class="sig-section">
-    <div class="wrap">
-      <div class="sec-head reveal"><span class="eyebrow">Bespoke</span><h2>A few signature experiences</h2></div>
-      <div class="sig-grid reveal">
-        <div class="sig-card"><span class="sig-num">1</span><p>Private yacht day to the L&eacute;rins islands</p></div>
-        <div class="sig-card"><span class="sig-num">2</span><p>Evening at the Monte-Carlo Casino, table reserved</p></div>
-        <div class="sig-card"><span class="sig-num">3</span><p>Private visit of the Villa Ephrussi de Rothschild</p></div>
-        <div class="sig-card"><span class="sig-num">4</span><p>Helicopter flight over the Baie des Anges</p></div>
-        <div class="sig-card"><span class="sig-num">5</span><p>Michelin dinner overlooking the old port of Saint-Tropez</p></div>
-      </div>
-      <div class="dest-cta reveal"><a class="btn-outline" href="mailto:groups@ktstravel.com?subject=French%20Riviera">Compose my Riviera journey</a></div>
-    </div>
-  </section>
 
   <section class="quote">
     <div class="quote-bg"><img src="https://images.pexels.com/photos/13139460/pexels-photo-13139460.jpeg?auto=compress&cs=tinysrgb&w=2400" onerror="this.onerror=null;this.src='assets/hero2.jpg'" alt=""></div>

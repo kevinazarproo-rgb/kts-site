@@ -90,20 +90,22 @@
   <section class="services" style="padding-top:clamp(3rem,6vw,5rem)">
     <div class="wrap">
       <div class="head reveal"><span class="eyebrow">Exp&eacute;riences</span><h2>Vivre Paris autrement</h2></div>
-      <div class="exp3 three reveal">
-        <article class="exp3-card">
-          <div class="exp3-img"><img src="https://images.unsplash.com/photo-1603378847481-b1c69e6e1e52?w=1000&auto=format&fit=crop&q=70&ixlib=rb-4.1.0" onerror="this.onerror=null;this.src='assets/maison.jpg'" alt="Le Louvre"></div>
-          <div class="exp3-txt"><span class="eyebrow">Patrimoine</span><h3>Patrimoine &amp; culture</h3><p>Paris est une ville d'exception, riche d'un patrimoine et d'une culture sans pareils. Avec KTS, vous d&eacute;couvrez ses plus beaux monuments en priv&eacute; &mdash; le Louvre, l'Op&eacute;ra Garnier, le mus&eacute;e d'Orsay et le ch&acirc;teau de Versailles &mdash; accompagn&eacute;s des meilleurs guides.</p></div>
-        </article>
-        <article class="exp3-card">
-          <div class="exp3-img"><img src="https://images.unsplash.com/photo-1562347174-7370ad83dc47?w=1000&auto=format&fit=crop&q=70&ixlib=rb-4.1.0" onerror="this.onerror=null;this.src='assets/a1.jpg'" alt="Mode parisienne"></div>
-          <div class="exp3-txt"><span class="eyebrow">Mode</span><h3>La capitale de la mode</h3><p>Capitale mondiale de la mode, Paris est le berceau du luxe et de l'&eacute;l&eacute;gance. KTS vous ouvre des portes rares : ateliers de haute couture, maisons de parfum et grands joailliers de la place Vend&ocirc;me, l&agrave; o&ugrave; le luxe se cr&eacute;e.</p></div>
-        </article>
-        <article class="exp3-card">
-          <div class="exp3-img"><img src="https://images.unsplash.com/photo-1602833334025-5019f046b8f7?w=1000&auto=format&fit=crop&q=70&ixlib=rb-4.1.0" onerror="this.onerror=null;this.src='assets/a2.jpg'" alt="Gastronomie parisienne"></div>
-          <div class="exp3-txt"><span class="eyebrow">Gastronomie</span><h3>La table fran&ccedil;aise</h3><p>Paris est aussi une f&ecirc;te pour les sens. Tables &eacute;toil&eacute;es mythiques, chefs d'exception et grandes maisons de Champagne : nous composons pour vous les plus belles exp&eacute;riences gastronomiques de la capitale.</p></div>
-        </article>
+      <div class="exp-carousel">
+        <button class="exp-arrow prev" aria-label="Previous" onclick="document.getElementById('expParis').scrollBy({left:-340,behavior:'smooth'})"><svg viewBox="0 0 14 14"><path d="M9 2L4 7l5 5"/></svg></button>
+        <div class="exp-track" id="expParis">
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=Paris"><div class="ph"><img src="https://images.unsplash.com/photo-1603378847481-b1c69e6e1e52?w=800&auto=format&fit=crop&q=70&ixlib=rb-4.1.0" onerror="this.onerror=null;this.src='assets/maison.jpg'" alt="Patrimoine &amp; culture"></div><h4>Patrimoine &amp; culture</h4></a>
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=Paris"><div class="ph"><img src="https://images.unsplash.com/photo-1562347174-7370ad83dc47?w=800&auto=format&fit=crop&q=70&ixlib=rb-4.1.0" onerror="this.onerror=null;this.src='assets/maison.jpg'" alt="La capitale de la mode"></div><h4>La capitale de la mode</h4></a>
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=Paris"><div class="ph"><img src="https://images.unsplash.com/photo-1602833334025-5019f046b8f7?w=800&auto=format&fit=crop&q=70&ixlib=rb-4.1.0" onerror="this.onerror=null;this.src='assets/maison.jpg'" alt="La table fran&ccedil;aise"></div><h4>La table fran&ccedil;aise</h4></a>
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=Paris"><div class="ph"><img src="https://images.pexels.com/photos/5196756/pexels-photo-5196756.jpeg?auto=compress&cs=tinysrgb&w=800" onerror="this.onerror=null;this.src='assets/maison.jpg'" alt="D&icirc;ner dans un palace place Vend&ocirc;me"></div><h4>D&icirc;ner dans un palace place Vend&ocirc;me</h4></a>
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=Paris"><div class="ph"><img src="https://images.pexels.com/photos/29730792/pexels-photo-29730792.jpeg?auto=compress&cs=tinysrgb&w=800" onerror="this.onerror=null;this.src='assets/maison.jpg'" alt="Le Louvre avant l&rsquo;ouverture"></div><h4>Le Louvre avant l&rsquo;ouverture</h4></a>
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=Paris"><div class="ph"><img src="https://images.unsplash.com/photo-1659293185132-ace57af55e30?w=800&auto=format&fit=crop&q=70&ixlib=rb-4.1.0" onerror="this.onerror=null;this.src='assets/maison.jpg'" alt="Survol de Paris et Versailles"></div><h4>Survol de Paris et Versailles</h4></a>
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=Paris"><div class="ph"><img src="https://images.pexels.com/photos/32393620/pexels-photo-32393620.jpeg?auto=compress&cs=tinysrgb&w=800" onerror="this.onerror=null;this.src='assets/maison.jpg'" alt="Atelier priv&eacute; de haute couture"></div><h4>Atelier priv&eacute; de haute couture</h4></a>
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=Paris"><div class="ph"><img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&auto=format&fit=crop&q=70&ixlib=rb-4.1.0" onerror="this.onerror=null;this.src='assets/maison.jpg'" alt="Croisi&egrave;re Champagne sur la Seine"></div><h4>Croisi&egrave;re Champagne sur la Seine</h4></a>
+          <a class="exp-card reveal" href="mailto:groups@ktstravel.com?subject=Paris"><div class="ph"><img src="https://images.pexels.com/photos/28751796/pexels-photo-28751796.jpeg?auto=compress&cs=tinysrgb&w=800" onerror="this.onerror=null;this.src='assets/maison.jpg'" alt="Disneyland Paris"></div><h4>Disneyland Paris</h4></a>
+        </div>
+        <button class="exp-arrow next" aria-label="Next" onclick="document.getElementById('expParis').scrollBy({left:340,behavior:'smooth'})"><svg viewBox="0 0 14 14"><path d="M5 2l5 5-5 5"/></svg></button>
       </div>
+      <div class="dest-cta reveal"><a class="btn-outline" href="mailto:groups@ktstravel.com?subject=Paris">Composons votre voyage &agrave; Paris</a></div>
     </div>
   </section>
 
@@ -129,19 +131,6 @@
     </div>
   </section>
 
-  <section class="sig-section">
-    <div class="wrap">
-      <div class="sec-head reveal"><span class="eyebrow">Sur mesure</span><h2>Quelques exp&eacute;riences signature</h2></div>
-      <div class="sig-grid reveal">
-        <div class="sig-card"><span class="sig-num">1</span><p>D&icirc;ner priv&eacute; sous la verri&egrave;re d'un palace de la place Vend&ocirc;me</p></div>
-        <div class="sig-card"><span class="sig-num">2</span><p>Visite du Louvre avant l'ouverture, accompagn&eacute; d'un conservateur</p></div>
-        <div class="sig-card"><span class="sig-num">3</span><p>Survol de Paris et de Versailles en h&eacute;licopt&egrave;re</p></div>
-        <div class="sig-card"><span class="sig-num">4</span><p>Atelier priv&eacute; dans une maison de haute couture</p></div>
-        <div class="sig-card"><span class="sig-num">5</span><p>Croisi&egrave;re au champagne sur la Seine au coucher du soleil</p></div>
-      </div>
-      <div class="dest-cta reveal"><a class="btn-outline" href="mailto:groups@ktstravel.com?subject=Paris">Composer mon s&eacute;jour &agrave; Paris</a></div>
-    </div>
-  </section>
 
   <section class="quote">
     <div class="quote-bg"><img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=2400&q=80" onerror="this.onerror=null;this.src='assets/hero1.jpg'" alt=""></div>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kevinazarproo-rgb.github.io/kts-site/sitemap.xml

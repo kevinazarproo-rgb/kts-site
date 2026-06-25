@@ -15,7 +15,7 @@
   /* menu overlay */
   var menu=document.getElementById('menuOverlay');
   function closeMenu(){if(menu){menu.classList.remove('open');menu.setAttribute('aria-hidden','true')}}
-  function openMenu(e){if(e)e.preventDefault();if(menu){menu.classList.add('open');menu.setAttribute('aria-hidden','false')}}
+  function openMenu(e){if(e)e.preventDefault();if(menu){menu.classList.add('open');menu.setAttribute('aria-hidden','false');var sub=document.getElementById('subDest');var acc=document.getElementById('accDest');if(sub)sub.classList.add('open');if(acc){acc.classList.add('open');acc.setAttribute('aria-expanded','true')}}}
   var btnMenu=document.getElementById('btnMenu');
   if(btnMenu)btnMenu.addEventListener('click',openMenu);
   var btnMenuBar=document.getElementById('btnMenuBar');

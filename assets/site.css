@@ -265,6 +265,15 @@ a.svc-col:hover .svc-more{text-decoration:underline}
 .dest-card:hover img{transform:scale(1.05)}
 .dest-card h4{margin-top:1rem;text-align:center;font-family:var(--serif);font-weight:400;font-size:1.4rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
 .dest-cta{text-align:center;margin-top:clamp(2.4rem,5vw,3.4rem)}
+.dest-marquee{overflow:hidden;position:relative}
+.dest-marquee::before,.dest-marquee::after{content:'';position:absolute;top:0;bottom:0;width:clamp(36px,7vw,110px);z-index:2;pointer-events:none}
+.dest-marquee::before{left:0;background:linear-gradient(90deg,var(--paper),rgba(255,255,255,0))}
+.dest-marquee::after{right:0;background:linear-gradient(270deg,var(--paper),rgba(255,255,255,0))}
+.dest-track{display:flex;width:max-content;animation:dest-scroll 64s linear infinite}
+.dest-marquee:hover .dest-track{animation-play-state:paused}
+.dest-track .dest-card{flex:0 0 clamp(218px,24vw,300px);margin-right:clamp(1.1rem,2.4vw,1.8rem)}
+@keyframes dest-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.dest-marquee{overflow-x:auto}.dest-track{animation:none}}
 .btn-outline{display:inline-block;border:1px solid var(--line);border-radius:30px;padding:.95rem 2.4rem;
   font-family:var(--sans);font-weight:400;font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);transition:all .3s var(--ease)}
 .btn-outline:hover{border-color:var(--accent);color:var(--accent)}

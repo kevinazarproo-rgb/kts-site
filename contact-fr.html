@@ -116,7 +116,8 @@
           </div>
         </div>
 
-        <form class="cform reveal" id="contactForm">
+        <form class="cform reveal" id="contactForm" action="https://formsubmit.co/groups@ktstravel.com" method="POST">
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0">
           <div class="cform-mode">
             <input type="radio" name="cmode" id="mode-quote" checked>
             <input type="radio" name="cmode" id="mode-msg">
@@ -145,6 +146,7 @@
           <div class="field" id="cf-other-wrap" hidden><label for="cf-other">Pr&eacute;cisez</label><input id="cf-other" name="other" type="text"></div>
           <div class="field"><label for="cf-msg">Votre message</label><textarea id="cf-msg" name="message" required></textarea></div>
           <button type="submit" class="btn">Envoyer le message</button>
+          <div class="cform-status" id="cfStatus" hidden></div>
           <p class="note">En envoyant ce message, vous acceptez d'&ecirc;tre recontact&eacute; par notre &eacute;quipe. Vos coordonn&eacute;es ne sont jamais partag&eacute;es.</p>
         </form>
       </div>
@@ -259,20 +261,42 @@
   function applyMode(){var quote=modeQuote.checked;typeField.hidden=!quote;if(!quote){otherWrap.hidden=true;if(otherInp)otherInp.required=false;}else{toggleOther();}}
   if(typeSel)typeSel.addEventListener('change',toggleOther);
   if(modeQuote){modeQuote.addEventListener('change',applyMode);modeMsg.addEventListener('change',applyMode);applyMode();}
+  var statusEl=document.getElementById('cfStatus');
+  var btn=f.querySelector('button[type="submit"]');
+  var btnLabel=btn?btn.textContent:'';
   f.addEventListener('submit',function(e){
     e.preventDefault();
+    var honey=f.querySelector('[name="_honey"]');
+    if(honey&&honey.value){return;}
     var g=function(id){return (document.getElementById(id)||{}).value||'';};
-    var who=g('cf-first')+' '+g('cf-last');
-    var subject,body;
-    if(modeQuote.checked){
-      var project=g('cf-type')==='Autre'?'Autre — '+g('cf-other'):g('cf-type');
-      subject='Demande de devis — '+project+' — '+who;
-      body='Nom : '+who+'\nE-mail : '+g('cf-email')+'\nTéléphone : '+g('cf-dial')+' '+g('cf-phone')+'\nProjet : '+project+'\n\n'+g('cf-msg');
-    }else{
-      subject='Message — '+who;
-      body='Nom : '+who+'\nE-mail : '+g('cf-email')+'\nTéléphone : '+g('cf-dial')+' '+g('cf-phone')+'\n\n'+g('cf-msg');
-    }
-    window.location.href='mailto:groups@ktstravel.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+    var who=(g('cf-first')+' '+g('cf-last')).trim();
+    var quote=modeQuote.checked;
+    var project=g('cf-type')==='Autre'?'Autre — '+g('cf-other'):g('cf-type');
+    var subject=quote?('Demande de devis — '+project+' — '+who):('Message — '+who);
+    var data=new FormData();
+    data.append('Nom',who);
+    data.append('email',g('cf-email'));
+    data.append('Téléphone',(g('cf-dial')+' '+g('cf-phone')).trim());
+    if(quote)data.append('Projet',project);
+    data.append('Message',g('cf-msg'));
+    data.append('Type de demande',quote?'Demande de devis':'Message');
+    data.append('_subject',subject);
+    data.append('_template','table');
+    data.append('_captcha','false');
+    if(statusEl){statusEl.hidden=false;statusEl.className='cform-status';statusEl.textContent='Envoi en cours…';}
+    if(btn){btn.disabled=true;btn.textContent='Envoi en cours…';}
+    fetch('https://formsubmit.co/ajax/groups@ktstravel.com',{method:'POST',body:data,headers:{'Accept':'application/json'}})
+      .then(function(r){return r.json();})
+      .then(function(res){
+        if(res&&(res.success===true||res.success==='true')){
+          if(statusEl){statusEl.className='cform-status ok';statusEl.textContent='Merci ! Votre message a bien été envoyé — notre équipe vous répond sous un jour ouvré.';}
+          f.reset();if(modeQuote)applyMode();
+        }else{throw new Error('fail');}
+      })
+      .catch(function(){
+        if(statusEl){statusEl.className='cform-status err';statusEl.textContent='Désolé, une erreur est survenue. Écrivez-nous directement à groups@ktstravel.com.';}
+      })
+      .finally(function(){if(btn){btn.disabled=false;btn.textContent=btnLabel;}});
   });
 })();
 </script>

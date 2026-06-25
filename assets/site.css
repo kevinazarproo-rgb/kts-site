@@ -679,3 +679,6 @@ a.svc-col:hover .svc-more{text-decoration:underline}
 .mac-bottom::after{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:100px;height:7px;background:#9596a0;border-radius:0 0 9px 9px}
 @media(max-width:560px){.mac-bottom{width:108%;left:-4%}}
 .trade-shot{width:100%;max-width:640px;display:block;margin:0 auto;height:auto}
+.cform-status{margin-top:1rem;padding:.85rem 1.1rem;border-radius:6px;font-family:var(--sans);font-size:.92rem;line-height:1.45;color:#fff;background:rgba(255,255,255,.12)}
+.cform-status.ok{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);color:#fff}
+.cform-status.err{background:rgba(190,40,40,.92);color:#fff}

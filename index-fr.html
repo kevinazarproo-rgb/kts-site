@@ -10,6 +10,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
+<style>
+  .promise-sec{padding:clamp(3.5rem,7vw,6rem) 0;background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .promise-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1rem,2vw,1.6rem);margin-top:clamp(2rem,4vw,3rem)}
+  @media(max-width:900px){.promise-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.promise-grid{grid-template-columns:1fr}}
+  .promise-card{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:1.8rem 1.5rem;display:flex;flex-direction:column;gap:.9rem}
+  .promise-card .pq{font-family:var(--serif);font-size:2.6rem;line-height:.5;color:var(--accent);height:.6em}
+  .promise-card p{font-family:var(--serif);font-weight:300;font-size:1.18rem;line-height:1.4;color:var(--ink);flex:1;margin:0}
+  .promise-card .pby{font-family:var(--sans);font-size:.7rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+</style>
 </head>
 <body>
 
@@ -142,6 +152,19 @@
     </div>
   </section>
 
+  <!-- NOTRE PROMESSE -->
+  <section class="promise-sec">
+    <div class="wrap">
+      <div class="dest-head reveal"><span class="eyebrow">Notre promesse</span><h2>Notre façon de voyager</h2><span class="dest-dash"></span></div>
+      <div class="promise-grid reveal">
+        <div class="promise-card"><span class="pq">&ldquo;</span><p>Un seul interlocuteur, du premier email au retour de voyage.</p><span class="pby">KTS Travel</span></div>
+        <div class="promise-card"><span class="pq">&ldquo;</span><p>Des adresses choisies à la main, jamais sur catalogue.</p><span class="pby">KTS Travel</span></div>
+        <div class="promise-card"><span class="pq">&ldquo;</span><p>Les portes qui ne s&rsquo;ouvrent pas seules &mdash; monuments privatisés, tables sans enseigne.</p><span class="pby">KTS Travel</span></div>
+        <div class="promise-card"><span class="pq">&ldquo;</span><p>Une équipe joignable à chaque instant, où que vous soyez.</p><span class="pby">KTS Travel</span></div>
+      </div>
+    </div>
+  </section>
+
   <!-- EXPÉRIENCES -->
   <section class="insp">
     <div class="wrap">
@@ -215,7 +238,8 @@
     </div>
     <div class="footer-creds">Membre Virtuoso &middot; Certifi&eacute;e Travelife &middot; Accr&eacute;dit&eacute;e IATA &middot; Atout France IM075100068</div>
     <div class="footer-bottom">&copy; 1987 &mdash; 2026 KTS Tourisme et Voyage SARL &middot; 20 rue de Boulainvilliers, 75016 Paris &middot; +33 (0)1 58 36 66 66</div>
-    <div class="footer-legal"><a href="mentions-legales-fr.html">Mentions l&eacute;gales</a><a href="confidentialite-fr.html">Politique de confidentialit&eacute;</a><a href="cookies-fr.html">Gestion des cookies</a></div>
+    <div class="footer-legal"><a href="mentions-legales-fr.html">Mentions l&eacute;gales</a><a href="cookies-fr.html">Gestion des cookies</a></div>
+    <div style="text-align:center;font-size:.72rem;letter-spacing:.04em;color:var(--muted);padding:.7rem 0 0">Tous droits réservés &middot; KTS VOYAGES &copy; 2026</div>
   </div>
 </footer>
 

@@ -74,8 +74,8 @@
   function buildFranceMap(){
     var el=document.getElementById('jrnyFrance');
     var cap=document.getElementById('jrnyFranceCap');
-    var capDefault=FR?'Survolez une région · cliquez pour la sélectionner'
-                     :'Hover a region · click to select it';
+    var capDefault=FR?'Survolez un pays · cliquez pour le sélectionner'
+                     :'Hover a country · click to select it';
     if(cap)cap.innerHTML=capDefault;
     if(!el)return;
     function fallback(){
@@ -88,25 +88,25 @@
       });
       resetDest=function(){el.querySelectorAll('.chip.on').forEach(function(c){c.classList.remove('on');});};
     }
-    // Projection Lambert conique conforme (geoConicConformal) — JS pur, sans librairie
-    var D2R=Math.PI/180, f1=44*D2R, f2=49*D2R, f0=46.5*D2R, l0=3*D2R;
-    var n=Math.log(Math.cos(f1)/Math.cos(f2))/Math.log(Math.tan(Math.PI/4+f2/2)/Math.tan(Math.PI/4+f1/2));
-    var F=Math.cos(f1)*Math.pow(Math.tan(Math.PI/4+f1/2),n)/n;
-    var rho0=F/Math.pow(Math.tan(Math.PI/4+f0/2),n);
+    // Projection azimutale équivalente (geoAzimuthalEqualArea) centrée Europe — JS pur
+    var D2R=Math.PI/180, l0=10*D2R, f1=52*D2R;
     function proj(lon,lat){
-      var lr=lon*D2R, pr=lat*D2R, rho=F/Math.pow(Math.tan(Math.PI/4+pr/2),n);
-      return [rho*Math.sin(n*(lr-l0)), rho0-rho*Math.cos(n*(lr-l0))];
+      var l=lon*D2R, p=lat*D2R;
+      var cosc=Math.sin(f1)*Math.sin(p)+Math.cos(f1)*Math.cos(p)*Math.cos(l-l0);
+      var k=Math.sqrt(2/(1+cosc));
+      return [k*Math.cos(p)*Math.sin(l-l0), k*(Math.cos(f1)*Math.sin(p)-Math.sin(f1)*Math.cos(p)*Math.cos(l-l0))];
     }
     function eachRing(geom,cb){
       if(!geom)return;
       if(geom.type==='Polygon')geom.coordinates.forEach(cb);
       else if(geom.type==='MultiPolygon')geom.coordinates.forEach(function(poly){poly.forEach(cb);});
     }
-    fetch('assets/france-regions.geojson')
+    fetch('assets/europe-countries.geojson')
       .then(function(r){return r.json();})
       .then(function(geo){
         var minX=1/0,minY=1/0,maxX=-1/0,maxY=-1/0;
         geo.features.forEach(function(f){eachRing(f.geometry,function(ring){ring.forEach(function(pt){
+          if(pt[0]<-26||pt[0]>46||pt[1]<33||pt[1]>72)return; // fenêtre Europe (rogne la Russie lointaine)
           var p=proj(pt[0],pt[1]);
           if(p[0]<minX)minX=p[0];if(p[0]>maxX)maxX=p[0];if(p[1]<minY)minY=p[1];if(p[1]>maxY)maxY=p[1];
         });});});
@@ -119,7 +119,7 @@
         var NS='http://www.w3.org/2000/svg';
         var svg=document.createElementNS(NS,'svg');
         svg.setAttribute('viewBox','0 0 '+W+' '+H);svg.setAttribute('role','img');
-        svg.setAttribute('aria-label',FR?'Carte des régions de France':'Map of French regions');
+        svg.setAttribute('aria-label',FR?'Carte de l\'Europe':'Map of Europe');
         var paths=[];
         geo.features.forEach(function(f){
           var p=document.createElementNS(NS,'path');

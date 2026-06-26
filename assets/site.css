@@ -818,3 +818,4 @@ a.svc-col:hover .svc-more{text-decoration:underline}
 .fr-region.on{fill:#c9a227}
 .fmap-cap{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.92rem;color:var(--muted);text-align:center;margin:.9rem 0 0;letter-spacing:.01em}
 .fmap-cap b{font-style:normal;color:#c9a227;letter-spacing:.04em}
+.fmap-france svg{overflow:hidden}

@@ -768,3 +768,22 @@ a.svc-col:hover .svc-more{text-decoration:underline}
 .jrny-card{border-top:3px solid var(--accent)}
 .jrny-go{box-shadow:0 12px 26px rgba(5,62,124,.28)}
 .jrny-label{color:var(--accent)}
+/* Journey — globe 3D qui tourne (pur CSS) */
+.globe-stage{position:relative;width:200px;height:200px;margin:0 auto clamp(1.6rem,4vw,2.6rem);perspective:800px}
+.globe-disc{position:absolute;inset:0;border-radius:50%;
+  background:radial-gradient(circle at 36% 30%,#e3eefa 0%,#2f74b8 45%,#0a3a6e 100%);
+  box-shadow:inset -16px -16px 38px rgba(0,0,0,.35),0 18px 44px rgba(5,62,124,.30)}
+.globe-disc::after{content:"";position:absolute;inset:0;border-radius:50%;
+  background:radial-gradient(circle at 31% 25%,rgba(255,255,255,.55),transparent 30%)}
+.globe{position:absolute;inset:0;transform-style:preserve-3d;animation:globe-spin 18s linear infinite}
+.globe .ring{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(255,255,255,.38)}
+.globe .ring:nth-child(1){transform:rotateY(0deg)}
+.globe .ring:nth-child(2){transform:rotateY(36deg)}
+.globe .ring:nth-child(3){transform:rotateY(72deg)}
+.globe .ring:nth-child(4){transform:rotateY(108deg)}
+.globe .ring:nth-child(5){transform:rotateY(144deg)}
+.globe .ring:nth-child(6){transform:rotateX(90deg)}
+.globe .ring:nth-child(7){transform:rotateX(90deg) translateZ(57px) scale(.82)}
+.globe .ring:nth-child(8){transform:rotateX(90deg) translateZ(-57px) scale(.82)}
+@keyframes globe-spin{to{transform:rotateY(360deg)}}
+@media(prefers-reduced-motion:reduce){.globe{animation:none}}

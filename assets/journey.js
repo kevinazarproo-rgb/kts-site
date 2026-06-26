@@ -45,7 +45,15 @@
     {en:'Corsica',fr:'Corse'},{en:'Normandy',fr:'Normandie'}
   ];
 
-  var selThemes={},selDests={};
+  var TYPES=[
+    {en:'Tailor-made journey',fr:'Séjour sur mesure'},
+    {en:'Group travel',fr:'Voyage de groupe'},
+    {en:'MICE & conventions',fr:'MICE & conventions'},
+    {en:'Incentive',fr:'Incentive'},
+    {en:'VIP travel',fr:'Voyage VIP'}
+  ];
+
+  var selThemes={},selDests={},selTypes={};
   function buildChips(row,items,store){
     if(!row)return;
     items.forEach(function(it){
@@ -57,6 +65,7 @@
   }
   buildChips(document.getElementById('jrnyThemes'),THEMES,selThemes);
   buildChips(document.getElementById('jrnyDests'),DESTS,selDests);
+  buildChips(document.getElementById('jrnyTypes'),TYPES,selTypes);
 
   function picked(store){return Object.keys(store).filter(function(k){return store[k];});}
 
@@ -72,7 +81,9 @@
     data.append('Name',who);
     data.append('email',g('jf-email'));
     data.append('Phone',g('jf-phone'));
+    var types=picked(selTypes);
     data.append('Destinations',dests.length?dests.join(', '):TXT.none);
+    data.append(FR?'Type de voyage':'Trip type',types.length?types.join(', '):TXT.none);
     data.append(FR?'Centres d\'intérêt':'Interests',themes.length?themes.join(', '):TXT.none);
     data.append('Dates',g('jf-dates'));
     data.append(FR?'Voyageurs':'Travellers',g('jf-people'));
@@ -87,7 +98,7 @@
       .then(function(res){
         if(res&&(res.success===true||res.success==='true')){
           if(statusEl){statusEl.className='cform-status ok';statusEl.textContent=TXT.ok;}
-          form.reset();selThemes={};selDests={};
+          form.reset();selThemes={};selDests={};selTypes={};
           form.querySelectorAll('.chip.on').forEach(function(c){c.classList.remove('on');});
         }else{throw new Error('fail');}
       })

@@ -754,3 +754,11 @@ a.svc-col:hover .svc-more{text-decoration:underline}
 .jrny-step p{font-size:.83rem;color:var(--muted);margin:0;line-height:1.45}
 .jrny-card>h3{position:relative;padding-bottom:.6rem}
 .jrny-card>h3::after{content:"";position:absolute;left:0;bottom:0;width:38px;height:2px;background:var(--accent)}
+/* Journey — vignettes photo destinations */
+.dchip-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:.7rem}
+.dchip{position:relative;border:2px solid var(--line);border-radius:8px;overflow:hidden;cursor:pointer;background:#fff;padding:0;text-align:left;transition:border-color .2s var(--ease),box-shadow .2s var(--ease)}
+.dchip img{width:100%;height:72px;object-fit:cover;display:block}
+.dchip span{display:block;padding:.45rem .6rem;font-family:var(--sans);font-weight:300;font-size:.82rem;letter-spacing:.01em;color:var(--ink)}
+.dchip:hover{border-color:var(--accent)}
+.dchip.on{border-color:var(--accent);box-shadow:0 8px 20px rgba(5,62,124,.18)}
+.dchip.on::after{content:"\2713";position:absolute;top:5px;right:6px;width:20px;height:20px;line-height:20px;text-align:center;background:var(--accent);color:#fff;border-radius:50%;font-size:.72rem;font-weight:600}

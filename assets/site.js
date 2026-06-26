@@ -61,4 +61,49 @@
       slides[i].classList.add('active');
     },5000);
   }
+
+  /* ===== Cookies / Google Analytics (consentement RGPD) ===== */
+  var GA_ID='G-XXXXXXXXXX';                 /* <-- remplacer par l'identifiant GA4 réel */
+  var CONFIGURED=GA_ID.indexOf('XXXX')===-1;
+  var CKEY='kts-consent';
+  var isFr=(document.documentElement.lang||'').toLowerCase().indexOf('fr')===0;
+  function getConsent(){try{return localStorage.getItem(CKEY);}catch(e){return null;}}
+  function setConsent(v){try{localStorage.setItem(CKEY,v);}catch(e){}}
+  function loadGA(){
+    if(!CONFIGURED||window.__gaLoaded)return;
+    window.__gaLoaded=true;
+    var s=document.createElement('script');s.async=true;
+    s.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;
+    document.head.appendChild(s);
+    window.dataLayer=window.dataLayer||[];
+    window.gtag=function(){window.dataLayer.push(arguments);};
+    window.gtag('js',new Date());
+    window.gtag('config',GA_ID,{anonymize_ip:true});
+  }
+  function showBanner(){
+    if(document.getElementById('ktsCookie'))return;
+    var txt=isFr
+      ?"Nous utilisons des cookies de mesure d'audience pour améliorer votre expérience."
+      :"We use analytics cookies to improve your experience.";
+    var more=isFr?"En savoir plus":"Learn more";
+    var href=isFr?"cookies-fr.html":"cookies.html";
+    var accept=isFr?"Accepter":"Accept";
+    var refuse=isFr?"Refuser":"Decline";
+    var b=document.createElement('div');
+    b.className='cookie-banner';b.id='ktsCookie';b.setAttribute('role','dialog');b.setAttribute('aria-live','polite');
+    b.innerHTML='<p>'+txt+' <a href="'+href+'">'+more+'</a></p>'+
+      '<div class="cookie-actions">'+
+      '<button type="button" class="cookie-refuse">'+refuse+'</button>'+
+      '<button type="button" class="cookie-accept">'+accept+'</button></div>';
+    document.body.appendChild(b);
+    b.querySelector('.cookie-accept').addEventListener('click',function(){setConsent('granted');b.remove();loadGA();});
+    b.querySelector('.cookie-refuse').addEventListener('click',function(){setConsent('denied');b.remove();});
+  }
+  /* permet de rouvrir le choix (ex. lien "Gestion des cookies") */
+  window.ktsCookiePrefs=function(e){if(e)e.preventDefault();showBanner();};
+  if(CONFIGURED){
+    var c=getConsent();
+    if(c==='granted')loadGA();
+    else if(c!=='denied')showBanner();
+  }
 })();

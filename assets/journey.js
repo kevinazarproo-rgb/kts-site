@@ -77,6 +77,11 @@
     {id:'normandy-msm',dest:'normandy',th:['culture','history','nature'],img:'https://images.pexels.com/photos/8430047/pexels-photo-8430047.jpeg?auto=compress&cs=tinysrgb&w=600',en:'Mont-Saint-Michel at low tide',fr:'Mont-Saint-Michel à marée basse',ben:'A guided barefoot crossing of the bay to the abbey.',bfr:'Une traversée guidée de la baie, pieds nus, jusqu\'à l\'abbaye.'},
     {id:'normandy-dday',dest:'normandy',th:['history','culture'],img:'https://images.unsplash.com/photo-1707209909974-8f0a3a3e2d3a?auto=format&fit=crop&w=600&q=70',en:'D-Day landing beaches',fr:'Plages du Débarquement',ben:'Omaha, the cemeteries and the batteries with an expert historian.',bfr:'Omaha, les cimetières et les batteries avec un historien expert.'},
     {id:'normandy-giverny',dest:'normandy',th:['art','romance','nature'],img:'https://images.unsplash.com/photo-1550948390-6eb7fa773072?auto=format&fit=crop&w=600&q=70',en:"Monet's garden at Giverny",fr:'Jardins de Monet à Giverny',ben:'The water-lily pond and the painter\'s house before opening hours.',bfr:'Le bassin aux nymphéas et la maison du peintre avant l\'ouverture.'}
+  ,
+    {id:'paris-versailles',dest:'paris',th:['culture','history','family'],img:'https://images.pexels.com/photos/32469438/pexels-photo-32469438.jpeg?auto=compress&cs=tinysrgb&w=600',en:'Palace of Versailles, privately',fr:'Château de Versailles en privé',ben:'The Hall of Mirrors and royal apartments before the gates open.',bfr:'La galerie des Glaces et les appartements royaux, avant la foule.'},
+    {id:'paris-dining',dest:'paris',th:['gastronomy','vip'],img:'https://images.unsplash.com/photo-1526821799652-2dc51675628e?auto=format&fit=crop&w=600&q=70',en:'Michelin dining & private chef',fr:'Dîner étoilé & chef privé',ben:'A starred dinner, then a private chef in a Haussmann apartment.',bfr:'Un dîner étoilé, puis un chef privé dans un appartement haussmannien.'},
+    {id:'riviera-eze',dest:'riviera',th:['culture','art'],img:'https://images.pexels.com/photos/13136997/pexels-photo-13136997.jpeg?auto=compress&cs=tinysrgb&w=600',en:'Èze & Saint-Paul-de-Vence',fr:'Èze & Saint-Paul-de-Vence',ben:'A perfume workshop in Èze and the artists village above the sea.',bfr:'Un atelier parfum à Èze et le village des artistes au-dessus de la mer.'},
+    {id:'provence-verdon',dest:'provence',th:['nature','family'],img:'https://images.unsplash.com/photo-1499002238440-d264edd596ec?auto=format&fit=crop&w=600&q=70',en:'Verdon gorges by kayak',fr:'Gorges du Verdon en kayak',ben:'Turquoise water between white cliffs, lunch in a perched village.',bfr:'Eau turquoise entre falaises blanches, déjeuner dans un village perché.'}
   ];
 
   function L(o,a,b){return FR?o[a]:o[b];}
@@ -99,20 +104,42 @@
   });
 
   /* --- moteur local --- */
+  var ALIAS={
+    paris:['paris'],
+    riviera:['riviera','azur','nice','cannes','monaco','tropez','antibes','menton','eze'],
+    provence:['provence','luberon','avignon','aix','marseille','gordes','verdon','lavande','lavender'],
+    loire:['loire','chambord','chenonceau','amboise'],
+    alsace:['alsace','strasbourg','colmar','riquewihr'],
+    bordeaux:['bordeaux','medoc','arcachon','emilion'],
+    burgundy:['bourgogne','burgundy','beaune','dijon','chablis'],
+    alps:['alpes','alps','mont blanc','chamonix','megeve','courchevel','val isere','annecy'],
+    seychelles:['seychelles','mahe','praslin','digue'],
+    corsica:['corse','corsica','bonifacio','ajaccio','calvi'],
+    normandy:['normandie','normandy','etretat','honfleur','deauville','giverny','monet','debarquement']
+  };
+  function detectDests(text){
+    var h=norm(text),out=[];
+    for(var id in ALIAS){if(ALIAS[id].some(function(a){return h.indexOf(norm(a))!==-1;}))out.push(id);}
+    return out;
+  }
   function localSuggest(text,themes,dests){
     var toks=norm(text).split(/\s+/).filter(Boolean);
-    var any=themes.length||dests.length||toks.length;
-    var scored=CAT.map(function(it){
+    var eff={};dests.forEach(function(d){eff[d]=1;});detectDests(text).forEach(function(d){eff[d]=1;});
+    var effDests=Object.keys(eff);
+    if(!(themes.length||effDests.length||toks.length))return CAT.slice(0,9);
+    var pool=effDests.length?CAT.filter(function(it){return effDests.indexOf(it.dest)!==-1;}):CAT;
+    var scored=pool.map(function(it){
       var s=0;
       themes.forEach(function(t){if(it.th.indexOf(t)!==-1)s+=3;});
-      if(dests.indexOf(it.dest)!==-1)s+=4;
       var hay=norm((FR?it.fr+' '+it.bfr:it.en+' '+it.ben)+' '+it.th.join(' ')+' '+destName(it.dest));
-      toks.forEach(function(tk){if(hay.indexOf(tk)!==-1)s+=1;});
+      toks.forEach(function(tk){if(tk.length>2&&hay.indexOf(tk)!==-1)s+=1;});
       return {it:it,s:s};
     });
-    if(!any){return CAT.slice(0,9);} /* rien de précisé : sélection par défaut */
-    scored=scored.filter(function(x){return x.s>0;}).sort(function(a,b){return b.s-a.s;});
-    return scored.slice(0,9).map(function(x){return x.it;});
+    scored.sort(function(a,b){return b.s-a.s;});
+    if(effDests.length)return scored.slice(0,12).map(function(x){return x.it;}); /* destination demandée : on n'affiche QUE cette destination */
+    var hit=scored.filter(function(x){return x.s>0;});
+    if(!hit.length)return CAT.slice(0,9);
+    return hit.slice(0,9).map(function(x){return x.it;});
   }
 
   /* --- rendu suggestions --- */

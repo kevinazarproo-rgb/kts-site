@@ -39,17 +39,17 @@
     {id:'local',en:'Local life & markets',fr:'Vie locale & marchés'}
   ];
   var DESTS=[
-    {en:'Paris',fr:'Paris',img:'https://images.unsplash.com/photo-1526821799652-2dc51675628e?auto=format&fit=crop&w=400&q=70'},
-    {en:'French Riviera',fr:"Côte d'Azur",img:'https://images.pexels.com/photos/13136997/pexels-photo-13136997.jpeg?auto=compress&cs=tinysrgb&w=400'},
-    {en:'Provence',fr:'Provence',img:'https://images.unsplash.com/photo-1499002238440-d264edd596ec?auto=format&fit=crop&w=400&q=70'},
-    {en:'Loire Valley',fr:'Val de Loire',img:'https://images.unsplash.com/photo-1650869653858-1c2c0768014f?auto=format&fit=crop&w=400&q=70'},
-    {en:'Alsace',fr:'Alsace',img:'https://images.unsplash.com/photo-1588365399397-f09fd8745464?auto=format&fit=crop&w=400&q=70'},
-    {en:'Bordeaux',fr:'Bordeaux',img:'https://images.unsplash.com/photo-1493564738392-d148cfbd6eda?auto=format&fit=crop&w=400&q=70'},
-    {en:'Burgundy',fr:'Bourgogne',img:'https://images.pexels.com/photos/2954929/pexels-photo-2954929.jpeg?auto=compress&cs=tinysrgb&w=400'},
-    {en:'French Alps',fr:'Alpes',img:'https://images.pexels.com/photos/34605838/pexels-photo-34605838.jpeg?auto=compress&cs=tinysrgb&w=400'},
-    {en:'Seychelles',fr:'Seychelles',img:'https://images.unsplash.com/photo-1704317653969-0a8a5ea0dd10?auto=format&fit=crop&w=400&q=70'},
-    {en:'Corsica',fr:'Corse',img:'https://images.unsplash.com/photo-1545129228-7a804588bf8e?auto=format&fit=crop&w=400&q=70'},
-    {en:'Normandy',fr:'Normandie',img:'https://images.pexels.com/photos/8430047/pexels-photo-8430047.jpeg?auto=compress&cs=tinysrgb&w=400'}
+    {en:'Paris',fr:'Paris',x:47,y:37},
+    {en:'French Riviera',fr:"Côte d'Azur",x:79,y:74},
+    {en:'Provence',fr:'Provence',x:67,y:72},
+    {en:'Loire Valley',fr:'Val de Loire',x:41,y:47},
+    {en:'Alsace',fr:'Alsace',x:80,y:33},
+    {en:'Bordeaux',fr:'Bordeaux',x:30,y:64},
+    {en:'Burgundy',fr:'Bourgogne',x:63,y:48},
+    {en:'French Alps',fr:'Alpes',x:76,y:58},
+    {en:'Corsica',fr:'Corse',x:88,y:90},
+    {en:'Normandy',fr:'Normandie',x:33,y:30},
+    {en:'Seychelles',fr:'Seychelles',offmap:true}
   ];
 
   var TYPES=[
@@ -70,18 +70,33 @@
       row.appendChild(b);
     });
   }
-  function buildDestChips(row,items,store){
-    if(!row)return;
-    items.forEach(function(it){
+  function buildDestMap(){
+    var listEl=document.getElementById('jrnyDestList');
+    var pinsEl=document.getElementById('jrnyDestPins');
+    if(!listEl)return;
+    DESTS.forEach(function(it){
       var label=FR?it.fr:it.en;
-      var b=document.createElement('button');b.type='button';b.className='dchip';
-      b.innerHTML='<img src="'+it.img+'" loading="lazy" onerror="this.onerror=null;this.src=\'assets/hero1.jpg\'" alt=""><span>'+label+'</span>';
-      b.addEventListener('click',function(){store[label]=!store[label];b.classList.toggle('on',store[label]);});
-      row.appendChild(b);
+      var li=document.createElement('button');li.type='button';
+      li.innerHTML='<span class="dot"></span>'+label;
+      listEl.appendChild(li);
+      var pin=null;
+      if(pinsEl&&typeof it.x==='number'){
+        pin=document.createElement('button');pin.type='button';pin.className='fmap-pin';
+        pin.style.left=it.x+'%';pin.style.top=it.y+'%';
+        pin.innerHTML='<span class="lbl">'+label+'</span>';
+        pinsEl.appendChild(pin);
+      }
+      function toggle(){
+        selDests[label]=!selDests[label];
+        li.classList.toggle('on',selDests[label]);
+        if(pin)pin.classList.toggle('on',selDests[label]);
+      }
+      li.addEventListener('click',toggle);
+      if(pin)pin.addEventListener('click',toggle);
     });
   }
   buildChips(document.getElementById('jrnyThemes'),THEMES,selThemes);
-  buildDestChips(document.getElementById('jrnyDests'),DESTS,selDests);
+  buildDestMap();
   buildChips(document.getElementById('jrnyTypes'),TYPES,selTypes);
 
   function picked(store){return Object.keys(store).filter(function(k){return store[k];});}
@@ -116,7 +131,7 @@
         if(res&&(res.success===true||res.success==='true')){
           if(statusEl){statusEl.className='cform-status ok';statusEl.textContent=TXT.ok;}
           form.reset();selThemes={};selDests={};selTypes={};
-          form.querySelectorAll('.chip.on,.dchip.on').forEach(function(c){c.classList.remove('on');});
+          form.querySelectorAll('.chip.on,.fmap-pin.on,.fmap-list button.on').forEach(function(c){c.classList.remove('on');});
         }else{throw new Error('fail');}
       })
       .catch(function(){if(statusEl){statusEl.className='cform-status err';statusEl.textContent=TXT.err;}})

@@ -16,7 +16,7 @@
  * { intro, ids } — uniquement des id présents dans le catalogue fourni.
  */
 
-const MODEL = '@cf/meta/llama-3.1-8b-instruct'; // gratuit ; pour + de finesse : '@cf/meta/llama-3.3-70b-instruct-fp8-fast'
+const MODEL = '@cf/meta/llama-3.3-70b-instruct-fp8-fast'; // modèle actuel ; voir AI → Models pour la liste à jour
 
 const CORS = {
   'Access-Control-Allow-Origin': '*',

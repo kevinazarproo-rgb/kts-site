@@ -39,17 +39,17 @@
     {id:'local',en:'Local life & markets',fr:'Vie locale & marchés'}
   ];
   var DESTS=[
-    {en:'Paris',fr:'Paris',lat:48.85,lng:2.35},
-    {en:'French Riviera',fr:"Côte d'Azur",lat:43.70,lng:7.27},
-    {en:'Provence',fr:'Provence',lat:43.95,lng:4.81},
-    {en:'Loire Valley',fr:'Val de Loire',lat:47.39,lng:0.69},
-    {en:'Alsace',fr:'Alsace',lat:48.58,lng:7.75},
-    {en:'Bordeaux',fr:'Bordeaux',lat:44.84,lng:-0.58},
-    {en:'Burgundy',fr:'Bourgogne',lat:47.32,lng:5.04},
-    {en:'French Alps',fr:'Alpes',lat:45.92,lng:6.87},
-    {en:'Corsica',fr:'Corse',lat:42.04,lng:9.01},
-    {en:'Normandy',fr:'Normandie',lat:49.18,lng:-0.37},
-    {en:'Seychelles',fr:'Seychelles',lat:-4.62,lng:55.45}
+    {en:'Paris',fr:'Paris',img:'https://images.unsplash.com/photo-1526821799652-2dc51675628e?auto=format&fit=crop&w=400&q=70'},
+    {en:'French Riviera',fr:"Côte d'Azur",img:'https://images.pexels.com/photos/13136997/pexels-photo-13136997.jpeg?auto=compress&cs=tinysrgb&w=400'},
+    {en:'Provence',fr:'Provence',img:'https://images.unsplash.com/photo-1499002238440-d264edd596ec?auto=format&fit=crop&w=400&q=70'},
+    {en:'Loire Valley',fr:'Val de Loire',img:'https://images.unsplash.com/photo-1650869653858-1c2c0768014f?auto=format&fit=crop&w=400&q=70'},
+    {en:'Alsace',fr:'Alsace',img:'https://images.unsplash.com/photo-1588365399397-f09fd8745464?auto=format&fit=crop&w=400&q=70'},
+    {en:'Bordeaux',fr:'Bordeaux',img:'https://images.unsplash.com/photo-1493564738392-d148cfbd6eda?auto=format&fit=crop&w=400&q=70'},
+    {en:'Burgundy',fr:'Bourgogne',img:'https://images.pexels.com/photos/2954929/pexels-photo-2954929.jpeg?auto=compress&cs=tinysrgb&w=400'},
+    {en:'French Alps',fr:'Alpes',img:'https://images.pexels.com/photos/34605838/pexels-photo-34605838.jpeg?auto=compress&cs=tinysrgb&w=400'},
+    {en:'Seychelles',fr:'Seychelles',img:'https://images.unsplash.com/photo-1704317653969-0a8a5ea0dd10?auto=format&fit=crop&w=400&q=70'},
+    {en:'Corsica',fr:'Corse',img:'https://images.unsplash.com/photo-1545129228-7a804588bf8e?auto=format&fit=crop&w=400&q=70'},
+    {en:'Normandy',fr:'Normandie',img:'https://images.pexels.com/photos/8430047/pexels-photo-8430047.jpeg?auto=compress&cs=tinysrgb&w=400'}
   ];
 
   var TYPES=[
@@ -71,75 +71,20 @@
     });
   }
   var resetDest=function(){};
-  function buildFranceMap(){
-    var el=document.getElementById('jrnyFrance');
-    var cap=document.getElementById('jrnyFranceCap');
-    var capDefault=FR?'Survolez un pays · cliquez pour le sélectionner'
-                     :'Hover a country · click to select it';
-    if(cap)cap.innerHTML=capDefault;
-    if(!el)return;
-    function fallback(){
-      el.className='chip-row';
-      DESTS.forEach(function(it){
-        var label=FR?it.fr:it.en;
-        var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=label;
-        b.addEventListener('click',function(){selDests[label]=!selDests[label];if(!selDests[label])delete selDests[label];b.classList.toggle('on',!!selDests[label]);});
-        el.appendChild(b);
-      });
-      resetDest=function(){el.querySelectorAll('.chip.on').forEach(function(c){c.classList.remove('on');});};
-    }
-    // Projection azimutale équivalente (geoAzimuthalEqualArea) centrée Europe — JS pur
-    var D2R=Math.PI/180, l0=10*D2R, f1=52*D2R;
-    function proj(lon,lat){
-      var l=lon*D2R, p=lat*D2R;
-      var cosc=Math.sin(f1)*Math.sin(p)+Math.cos(f1)*Math.cos(p)*Math.cos(l-l0);
-      var k=Math.sqrt(2/(1+cosc));
-      return [k*Math.cos(p)*Math.sin(l-l0), k*(Math.cos(f1)*Math.sin(p)-Math.sin(f1)*Math.cos(p)*Math.cos(l-l0))];
-    }
-    function eachRing(geom,cb){
-      if(!geom)return;
-      if(geom.type==='Polygon')geom.coordinates.forEach(cb);
-      else if(geom.type==='MultiPolygon')geom.coordinates.forEach(function(poly){poly.forEach(cb);});
-    }
-    fetch('assets/europe-countries.geojson')
-      .then(function(r){return r.json();})
-      .then(function(geo){
-        var minX=1/0,minY=1/0,maxX=-1/0,maxY=-1/0;
-        geo.features.forEach(function(f){eachRing(f.geometry,function(ring){ring.forEach(function(pt){
-          if(pt[0]<-26||pt[0]>46||pt[1]<33||pt[1]>72)return; // fenêtre Europe (rogne la Russie lointaine)
-          var p=proj(pt[0],pt[1]);
-          if(p[0]<minX)minX=p[0];if(p[0]>maxX)maxX=p[0];if(p[1]<minY)minY=p[1];if(p[1]>maxY)maxY=p[1];
-        });});});
-        var W=520,H=500,pad=10;
-        var s=Math.min((W-2*pad)/(maxX-minX),(H-2*pad)/(maxY-minY));
-        var ox=pad+(W-2*pad-(maxX-minX)*s)/2, oy=pad+(H-2*pad-(maxY-minY)*s)/2;
-        function sx(x){return ox+(x-minX)*s;}
-        function sy(y){return oy+(maxY-y)*s;}
-        function geomD(geom){var d='';eachRing(geom,function(ring){ring.forEach(function(pt,i){var p=proj(pt[0],pt[1]);d+=(i?'L':'M')+sx(p[0]).toFixed(1)+' '+sy(p[1]).toFixed(1);});d+='Z';});return d;}
-        var NS='http://www.w3.org/2000/svg';
-        var svg=document.createElementNS(NS,'svg');
-        svg.setAttribute('viewBox','0 0 '+W+' '+H);svg.setAttribute('role','img');
-        svg.setAttribute('aria-label',FR?'Carte de l\'Europe':'Map of Europe');
-        var paths=[];
-        geo.features.forEach(function(f){
-          var p=document.createElementNS(NS,'path');
-          p.setAttribute('d',geomD(f.geometry));p.setAttribute('class','fr-region');
-          var nom=(f.properties&&(f.properties.nom||f.properties.name))||'';
-          p.addEventListener('click',function(){
-            selDests[nom]=!selDests[nom];if(!selDests[nom])delete selDests[nom];
-            p.classList.toggle('on',!!selDests[nom]);
-            if(cap)cap.innerHTML=selDests[nom]?('<b>'+nom+'</b>'):capDefault;
-          });
-          paths.push(p);svg.appendChild(p);
-        });
-        el.appendChild(svg);
-        resetDest=function(){paths.forEach(function(p){p.classList.remove('on');});if(cap)cap.innerHTML=capDefault;};
-      })
-      .catch(function(){fallback();});
+  function buildDestChips(){
+    var row=document.getElementById('jrnyDests');
+    if(!row)return;
+    DESTS.forEach(function(it){
+      var label=FR?it.fr:it.en;
+      var b=document.createElement('button');b.type='button';b.className='dchip';
+      b.innerHTML='<img src="'+it.img+'" loading="lazy" onerror="this.onerror=null;this.src=\'assets/hero1.jpg\'" alt=""><span>'+label+'</span>';
+      b.addEventListener('click',function(){selDests[label]=!selDests[label];if(!selDests[label])delete selDests[label];b.classList.toggle('on',!!selDests[label]);});
+      row.appendChild(b);
+    });
+    resetDest=function(){row.querySelectorAll('.dchip.on').forEach(function(c){c.classList.remove('on');});};
   }
   buildChips(document.getElementById('jrnyThemes'),THEMES,selThemes);
-  buildFranceMap();
-  buildChips(document.getElementById('jrnyDestExtra'),[{en:'Seychelles',fr:'Seychelles'}],selDests);
+  buildDestChips();
   buildChips(document.getElementById('jrnyTypes'),TYPES,selTypes);
 
   function picked(store){return Object.keys(store).filter(function(k){return store[k];});}

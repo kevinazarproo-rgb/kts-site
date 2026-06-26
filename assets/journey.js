@@ -39,17 +39,17 @@
     {id:'local',en:'Local life & markets',fr:'Vie locale & marchés'}
   ];
   var DESTS=[
-    {en:'Paris',fr:'Paris',x:47,y:37},
-    {en:'French Riviera',fr:"Côte d'Azur",x:79,y:74},
-    {en:'Provence',fr:'Provence',x:67,y:72},
-    {en:'Loire Valley',fr:'Val de Loire',x:41,y:47},
-    {en:'Alsace',fr:'Alsace',x:80,y:33},
-    {en:'Bordeaux',fr:'Bordeaux',x:30,y:64},
-    {en:'Burgundy',fr:'Bourgogne',x:63,y:48},
-    {en:'French Alps',fr:'Alpes',x:76,y:58},
-    {en:'Corsica',fr:'Corse',x:88,y:90},
-    {en:'Normandy',fr:'Normandie',x:33,y:30},
-    {en:'Seychelles',fr:'Seychelles',offmap:true}
+    {en:'Paris',fr:'Paris',lat:48.85,lng:2.35},
+    {en:'French Riviera',fr:"Côte d'Azur",lat:43.70,lng:7.27},
+    {en:'Provence',fr:'Provence',lat:43.95,lng:4.81},
+    {en:'Loire Valley',fr:'Val de Loire',lat:47.39,lng:0.69},
+    {en:'Alsace',fr:'Alsace',lat:48.58,lng:7.75},
+    {en:'Bordeaux',fr:'Bordeaux',lat:44.84,lng:-0.58},
+    {en:'Burgundy',fr:'Bourgogne',lat:47.32,lng:5.04},
+    {en:'French Alps',fr:'Alpes',lat:45.92,lng:6.87},
+    {en:'Corsica',fr:'Corse',lat:42.04,lng:9.01},
+    {en:'Normandy',fr:'Normandie',lat:49.18,lng:-0.37},
+    {en:'Seychelles',fr:'Seychelles',lat:-4.62,lng:55.45}
   ];
 
   var TYPES=[
@@ -70,30 +70,49 @@
       row.appendChild(b);
     });
   }
+  var resetDest=function(){};
   function buildDestMap(){
     var listEl=document.getElementById('jrnyDestList');
-    var pinsEl=document.getElementById('jrnyDestPins');
     if(!listEl)return;
+    var pts=DESTS.map(function(it){return {lat:it.lat,lng:it.lng,label:FR?it.fr:it.en};});
+    var liByLabel={},world=null;
+    function toggle(label){
+      selDests[label]=!selDests[label];if(!selDests[label])delete selDests[label];
+      if(liByLabel[label])liByLabel[label].classList.toggle('on',!!selDests[label]);
+      if(world)world.pointsData(pts);
+    }
     DESTS.forEach(function(it){
       var label=FR?it.fr:it.en;
       var li=document.createElement('button');li.type='button';
       li.innerHTML='<span class="dot"></span>'+label;
-      listEl.appendChild(li);
-      var pin=null;
-      if(pinsEl&&typeof it.x==='number'){
-        pin=document.createElement('button');pin.type='button';pin.className='fmap-pin';
-        pin.style.left=it.x+'%';pin.style.top=it.y+'%';
-        pin.innerHTML='<span class="lbl">'+label+'</span>';
-        pinsEl.appendChild(pin);
-      }
-      function toggle(){
-        selDests[label]=!selDests[label];
-        li.classList.toggle('on',selDests[label]);
-        if(pin)pin.classList.toggle('on',selDests[label]);
-      }
-      li.addEventListener('click',toggle);
-      if(pin)pin.addEventListener('click',toggle);
+      li.addEventListener('click',function(){
+        toggle(label);
+        if(world&&selDests[label])world.pointOfView({lat:it.lat,lng:it.lng,altitude:1.6},900);
+      });
+      liByLabel[label]=li;listEl.appendChild(li);
     });
+    var gEl=document.getElementById('jrnyGlobe');
+    if(gEl&&window.Globe){
+      try{
+        world=window.Globe()(gEl)
+          .globeImageUrl('//unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
+          .bumpImageUrl('//unpkg.com/three-globe/example/img/earth-topology.png')
+          .backgroundColor('rgba(0,0,0,0)')
+          .pointsData(pts).pointLat('lat').pointLng('lng')
+          .pointColor(function(d){return selDests[d.label]?'#7fb4ff':'#ffffff';})
+          .pointAltitude(0.03).pointRadius(0.6)
+          .pointLabel(function(d){return d.label;})
+          .onPointClick(function(d){toggle(d.label);});
+        var c=world.controls();c.autoRotate=true;c.autoRotateSpeed=0.7;c.enableZoom=false;
+        var size=function(){world.width(gEl.clientWidth||400).height(gEl.clientHeight||360);};
+        size();world.pointOfView({lat:30,lng:12,altitude:2.3});
+        window.addEventListener('resize',size);
+      }catch(e){world=null;}
+    }
+    resetDest=function(){
+      Object.keys(liByLabel).forEach(function(k){liByLabel[k].classList.remove('on');});
+      if(world)world.pointsData(pts);
+    };
   }
   buildChips(document.getElementById('jrnyThemes'),THEMES,selThemes);
   buildDestMap();
@@ -131,7 +150,8 @@
         if(res&&(res.success===true||res.success==='true')){
           if(statusEl){statusEl.className='cform-status ok';statusEl.textContent=TXT.ok;}
           form.reset();selThemes={};selDests={};selTypes={};
-          form.querySelectorAll('.chip.on,.fmap-pin.on,.fmap-list button.on').forEach(function(c){c.classList.remove('on');});
+          form.querySelectorAll('.chip.on').forEach(function(c){c.classList.remove('on');});
+          resetDest();
         }else{throw new Error('fail');}
       })
       .catch(function(){if(statusEl){statusEl.className='cform-status err';statusEl.textContent=TXT.err;}})

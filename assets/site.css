@@ -806,3 +806,7 @@ a.svc-col:hover .svc-more{text-decoration:underline}
 .fmap-pin .lbl{position:absolute;bottom:150%;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-family:var(--sans);font-size:.66rem;letter-spacing:.03em;white-space:nowrap;padding:.22rem .5rem;border-radius:4px;opacity:0;pointer-events:none;transition:opacity .18s}
 .fmap-pin:hover .lbl{opacity:1}
 .fmap-note{font-size:.8rem;color:var(--muted);margin:.2rem 0 0}
+/* Journey — globe 3D (globe.gl) */
+.fmap-globe{position:relative;height:clamp(300px,46vw,420px);border-radius:10px;overflow:hidden;
+  background:radial-gradient(circle at 50% 38%,#163a66,#06101f);box-shadow:0 14px 34px rgba(5,62,124,.25)}
+.fmap-globe canvas{display:block}

@@ -1,22 +1,22 @@
 /**
- * KTS · "Compose your journey" — Cloudflare Worker (IA gratuite via Workers AI)
+ * KTS · "Compose your journey" — Cloudflare Worker (Workers AI)
+ * Reçoit { lang, text, themes, destinations, catalog } et renvoie { intro, ids, model }.
+ * Essaie plusieurs modèles jusqu'à en trouver un disponible sur le compte.
  *
- * Déploiement (tableau de bord Cloudflare, sans rien installer) :
- *  1. Crée un compte gratuit sur https://dash.cloudflare.com
- *  2. Menu "Workers & Pages" → "Create" → "Create Worker"
- *  3. Donne un nom (ex. kts-journey-ai) → "Deploy"
- *  4. "Edit code" → colle TOUT ce fichier à la place de l'exemple → "Deploy"
- *  5. Onglet "Settings" → "Bindings" → "Add binding" → "Workers AI"
- *       - Variable name : AI
- *     puis "Deploy" à nouveau
- *  6. Copie l'URL du Worker (ex. https://kts-journey-ai.TON-SOUS-DOMAINE.workers.dev)
- *     et envoie-la — on la colle dans assets/journey.js (variable AI_ENDPOINT).
- *
- * Le Worker reçoit { lang, text, themes, destinations, catalog } et renvoie
- * { intro, ids } — uniquement des id présents dans le catalogue fourni.
+ * Diagnostic : ouvre l'URL du Worker dans le navigateur avec ?debug=1
+ *   -> https://kts-journey-ai.xxx.workers.dev/?debug=1
+ *   Il teste les modèles et affiche lequel fonctionne / les erreurs.
  */
 
-const MODEL = '@cf/meta/llama-3.3-70b-instruct-fp8-fast'; // modèle actuel ; voir AI → Models pour la liste à jour
+// Liste de modèles essayés dans l'ordre (le 1er qui marche est utilisé)
+const MODELS = [
+  '@cf/meta/llama-3.3-70b-instruct-fp8-fast',
+  '@cf/meta/llama-4-scout-17b-16e-instruct',
+  '@cf/meta/llama-3.1-8b-instruct-fast',
+  '@cf/meta/llama-3.1-70b-instruct',
+  '@cf/mistralai/mistral-small-3.1-24b-instruct',
+  '@cf/meta/llama-3-8b-instruct',
+];
 
 const CORS = {
   'Access-Control-Allow-Origin': '*',
@@ -27,8 +27,23 @@ const CORS = {
 export default {
   async fetch(request, env) {
     if (request.method === 'OPTIONS') return new Response(null, { headers: CORS });
-    if (request.method !== 'POST')
-      return json({ error: 'POST only' }, 405);
+
+    // Mode diagnostic : ?debug=1 teste les modèles un par un
+    const url = new URL(request.url);
+    if (request.method === 'GET' && url.searchParams.get('debug') === '1') {
+      const report = [];
+      for (const m of MODELS) {
+        try {
+          const r = await env.AI.run(m, { messages: [{ role: 'user', content: 'ping' }], max_tokens: 5 });
+          report.push({ model: m, ok: true, sample: (r && (r.response || r.result || '')) + '' });
+        } catch (e) {
+          report.push({ model: m, ok: false, error: String(e) });
+        }
+      }
+      return json({ debug: report });
+    }
+
+    if (request.method !== 'POST') return json({ error: 'POST only' }, 405);
 
     let body;
     try { body = await request.json(); }
@@ -62,30 +77,32 @@ export default {
       `Destinations: ${dests.join(', ') || '(any)'}\n\n` +
       `CATALOG (id | title | dest | themes | blurb)\n${list}`;
 
-    let aiText = '';
-    try {
-      const out = await env.AI.run(MODEL, {
-        messages: [
-          { role: 'system', content: sys },
-          { role: 'user', content: user },
-        ],
-        max_tokens: 400,
-        temperature: 0.3,
-      });
-      aiText = (out && (out.response || out.result || '')) + '';
-    } catch (e) {
-      return json({ error: 'AI error', detail: String(e) }, 502);
-    }
+    const messages = [
+      { role: 'system', content: sys },
+      { role: 'user', content: user },
+    ];
 
-    // Extraction tolérante du JSON renvoyé par le modèle
+    let aiText = '', usedModel = '', lastErr = '';
+    for (const m of MODELS) {
+      try {
+        const out = await env.AI.run(m, { messages, max_tokens: 400, temperature: 0.3 });
+        aiText = (out && (out.response || out.result || '')) + '';
+        usedModel = m;
+        break;
+      } catch (e) {
+        lastErr = String(e);
+      }
+    }
+    if (!usedModel) return json({ error: 'no model available', detail: lastErr }, 502);
+
     let data = {};
-    const m = aiText.match(/\{[\s\S]*\}/);
-    if (m) { try { data = JSON.parse(m[0]); } catch (e) { /* ignore */ } }
+    const mm = aiText.match(/\{[\s\S]*\}/);
+    if (mm) { try { data = JSON.parse(mm[0]); } catch (e) { /* ignore */ } }
 
     const ids = Array.isArray(data.ids) ? data.ids.filter((id) => validIds.has(id)).slice(0, 8) : [];
     const intro = typeof data.intro === 'string' ? data.intro.slice(0, 300) : '';
 
-    return json({ intro, ids });
+    return json({ intro, ids, model: usedModel });
   },
 };
 

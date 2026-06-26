@@ -107,7 +107,7 @@
   var ALIAS={
     paris:['paris'],
     riviera:['riviera','azur','nice','cannes','monaco','tropez','antibes','menton','eze'],
-    provence:['provence','luberon','avignon','aix','marseille','gordes','verdon','lavande','lavender'],
+    provence:['provence','luberon','avignon','aix','marseille','gordes','verdon'],
     loire:['loire','chambord','chenonceau','amboise'],
     alsace:['alsace','strasbourg','colmar','riquewihr'],
     bordeaux:['bordeaux','medoc','arcachon','emilion'],
@@ -117,26 +117,51 @@
     corsica:['corse','corsica','bonifacio','ajaccio','calvi'],
     normandy:['normandie','normandy','etretat','honfleur','deauville','giverny','monet','debarquement']
   };
+  var STOP={};
+  'une un des les le la du de avec pour dans sur sous par et ou en au aux ce cette mon ma mes nos notre votre vos plutot beau belle bon bonne tres plus semaine semaines jour jours nuit nuits voyage sejour sejours vacances envie envies quelque quelques faire aller partir pas trop peu assez nous vous je on the and for with our your you week days day night nights trip holiday vacation some want would like bit not too away around'.split(' ').forEach(function(w){STOP[w]=1;});
+  var KW=[
+    {w:['ski','neige','snowboard','chalet','montagne','sommet','sommets','mountain','snow','alpin','alpine'],th:['mountain'],dest:['alps']},
+    {w:['vin','vins','vignoble','vignobles','degustation','oenologie','cave','wine','vineyard','vineyards','tasting'],th:['gastronomy'],dest:[]},
+    {w:['gastronomie','gastronomique','restaurant','restaurants','etoile','etoilee','etoiles','michelin','table','tables','dining','food','culinaire'],th:['gastronomy'],dest:[]},
+    {w:['plage','plages','mer','ocean','lagon','lagons','ile','iles','plongee','snorkeling','beach','beaches','sea','island','islands','diving'],th:['beach'],dest:[]},
+    {w:['romantique','romance','amoureux','amoureuse','noces','honeymoon','couple','romantic','lune'],th:['romance'],dest:[]},
+    {w:['famille','familial','familiale','enfants','enfant','family','kids','children'],th:['family'],dest:[]},
+    {w:['chateau','chateaux','castle','castles','patrimoine','heritage','histoire','history','musee','museum','culturel','culturelle'],th:['culture','history'],dest:[]},
+    {w:['art','jardin','jardins','garden','gardens','peinture','impressionnisme'],th:['art'],dest:[]},
+    {w:['vip','luxe','luxueux','luxury','prive','privee','exclusif','exclusive'],th:['vip'],dest:[]},
+    {w:['spa','wellness','detente','repos','relaxation','relax','reposant','reposante','calme'],th:['wellness'],dest:[]},
+    {w:['nature','randonnee','rando','hiking','montgolfiere','balloon','kayak','outdoors'],th:['nature'],dest:[]},
+    {w:['sud','south'],th:[],dest:['provence','riviera']},
+    {w:['debarquement','d-day','dday'],th:['history'],dest:['normandy']}
+  ];
   function detectDests(text){
     var h=norm(text),out=[];
     for(var id in ALIAS){if(ALIAS[id].some(function(a){return h.indexOf(norm(a))!==-1;}))out.push(id);}
     return out;
   }
+  function infer(text){
+    var h=norm(text),th={},de={};
+    KW.forEach(function(k){if(k.w.some(function(w){return h.indexOf(norm(w))!==-1;})){k.th.forEach(function(t){th[t]=1;});k.dest.forEach(function(d){de[d]=1;});}});
+    return {themes:Object.keys(th),dests:Object.keys(de)};
+  }
   function localSuggest(text,themes,dests){
-    var toks=norm(text).split(/\s+/).filter(Boolean);
-    var eff={};dests.forEach(function(d){eff[d]=1;});detectDests(text).forEach(function(d){eff[d]=1;});
-    var effDests=Object.keys(eff);
-    if(!(themes.length||effDests.length||toks.length))return CAT.slice(0,9);
+    var inf=infer(text);
+    var eth={};themes.forEach(function(t){eth[t]=1;});inf.themes.forEach(function(t){eth[t]=1;});
+    var themeList=Object.keys(eth);
+    var ed={};dests.forEach(function(d){ed[d]=1;});detectDests(text).forEach(function(d){ed[d]=1;});inf.dests.forEach(function(d){ed[d]=1;});
+    var effDests=Object.keys(ed);
+    var toks=norm(text).split(/\s+/).filter(function(t){return t.length>2&&!STOP[t];});
+    if(!(themeList.length||effDests.length||toks.length))return CAT.slice(0,9);
     var pool=effDests.length?CAT.filter(function(it){return effDests.indexOf(it.dest)!==-1;}):CAT;
     var scored=pool.map(function(it){
-      var s=0;
-      themes.forEach(function(t){if(it.th.indexOf(t)!==-1)s+=3;});
-      var hay=norm((FR?it.fr+' '+it.bfr:it.en+' '+it.ben)+' '+it.th.join(' ')+' '+destName(it.dest));
-      toks.forEach(function(tk){if(tk.length>2&&hay.indexOf(tk)!==-1)s+=1;});
-      return {it:it,s:s};
+      var sc=0;
+      themeList.forEach(function(t){if(it.th.indexOf(t)!==-1)sc+=3;});
+      var hay=norm((FR?it.fr+' '+it.bfr:it.en+' '+it.ben)+' '+destName(it.dest));
+      toks.forEach(function(tk){if(hay.indexOf(tk)!==-1)sc+=1;});
+      return {it:it,s:sc};
     });
     scored.sort(function(a,b){return b.s-a.s;});
-    if(effDests.length)return scored.slice(0,12).map(function(x){return x.it;}); /* destination demandée : on n'affiche QUE cette destination */
+    if(effDests.length)return scored.slice(0,9).map(function(x){return x.it;});
     var hit=scored.filter(function(x){return x.s>0;});
     if(!hit.length)return CAT.slice(0,9);
     return hit.slice(0,9).map(function(x){return x.it;});

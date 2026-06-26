@@ -5,7 +5,7 @@
   var FR=(document.documentElement.lang||'').toLowerCase().indexOf('fr')===0;
 
   /* >>> Pour activer l'IA plus tard : coller ici l'URL du Worker Cloudflare (ex. https://kts-ia.xxx.workers.dev). Laisser vide = moteur local. */
-  var AI_ENDPOINT='';
+  var AI_ENDPOINT='https://kts-journey-ai.kevinazarproo.workers.dev';
 
   var TXT=FR?{
     intro:"Voici quelques idées qui correspondent à vos envies. Ajoutez celles qui vous plaisent, puis envoyez-nous votre sélection.",

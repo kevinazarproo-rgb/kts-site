@@ -71,51 +71,54 @@
     });
   }
   var resetDest=function(){};
-  function buildDestMap(){
-    var listEl=document.getElementById('jrnyDestList');
-    if(!listEl)return;
-    var pts=DESTS.map(function(it){return {lat:it.lat,lng:it.lng,label:FR?it.fr:it.en};});
-    var liByLabel={},world=null;
-    function toggle(label){
-      selDests[label]=!selDests[label];if(!selDests[label])delete selDests[label];
-      if(liByLabel[label])liByLabel[label].classList.toggle('on',!!selDests[label]);
-      if(world)world.pointsData(pts);
-    }
-    DESTS.forEach(function(it){
-      var label=FR?it.fr:it.en;
-      var li=document.createElement('button');li.type='button';
-      li.innerHTML='<span class="dot"></span>'+label;
-      li.addEventListener('click',function(){
-        toggle(label);
-        if(world&&selDests[label])world.pointOfView({lat:it.lat,lng:it.lng,altitude:1.6},900);
+  function buildFranceMap(){
+    var el=document.getElementById('jrnyFrance');
+    var cap=document.getElementById('jrnyFranceCap');
+    var capDefault=FR?'Survolez une région · cliquez pour la sélectionner'
+                     :'Hover a region · click to select it';
+    if(cap)cap.innerHTML=capDefault;
+    if(!el)return;
+    function fallback(){
+      el.className='chip-row';
+      DESTS.forEach(function(it){
+        var label=FR?it.fr:it.en;
+        var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=label;
+        b.addEventListener('click',function(){selDests[label]=!selDests[label];if(!selDests[label])delete selDests[label];b.classList.toggle('on',!!selDests[label]);});
+        el.appendChild(b);
       });
-      liByLabel[label]=li;listEl.appendChild(li);
-    });
-    var gEl=document.getElementById('jrnyGlobe');
-    if(gEl&&window.Globe){
-      try{
-        world=window.Globe()(gEl)
-          .globeImageUrl('//unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
-          .bumpImageUrl('//unpkg.com/three-globe/example/img/earth-topology.png')
-          .backgroundColor('rgba(0,0,0,0)')
-          .pointsData(pts).pointLat('lat').pointLng('lng')
-          .pointColor(function(d){return selDests[d.label]?'#7fb4ff':'#ffffff';})
-          .pointAltitude(0.03).pointRadius(0.6)
-          .pointLabel(function(d){return d.label;})
-          .onPointClick(function(d){toggle(d.label);});
-        var c=world.controls();c.autoRotate=true;c.autoRotateSpeed=0.7;c.enableZoom=false;
-        var size=function(){world.width(gEl.clientWidth||400).height(gEl.clientHeight||360);};
-        size();world.pointOfView({lat:30,lng:12,altitude:2.3});
-        window.addEventListener('resize',size);
-      }catch(e){world=null;}
+      resetDest=function(){el.querySelectorAll('.chip.on').forEach(function(c){c.classList.remove('on');});};
     }
-    resetDest=function(){
-      Object.keys(liByLabel).forEach(function(k){liByLabel[k].classList.remove('on');});
-      if(world)world.pointsData(pts);
-    };
+    if(!(window.d3&&d3.geoConicConformal&&d3.geoPath)){fallback();return;}
+    fetch('https://cdn.jsdelivr.net/gh/gregoiredavid/france-geojson@master/regions-version-simplifiee.geojson')
+      .then(function(r){return r.json();})
+      .then(function(geo){
+        var W=520,H=500,NS='http://www.w3.org/2000/svg';
+        var proj=d3.geoConicConformal().rotate([-3,0]).center([0,46.5]).parallels([44,49]);
+        proj.fitExtent([[8,8],[W-8,H-8]],geo);
+        var path=d3.geoPath().projection(proj);
+        var svg=document.createElementNS(NS,'svg');
+        svg.setAttribute('viewBox','0 0 '+W+' '+H);svg.setAttribute('role','img');
+        svg.setAttribute('aria-label',FR?'Carte des régions de France':'Map of French regions');
+        var paths=[];
+        geo.features.forEach(function(f){
+          var p=document.createElementNS(NS,'path');
+          p.setAttribute('d',path(f));p.setAttribute('class','fr-region');
+          var nom=(f.properties&&(f.properties.nom||f.properties.name))||'';
+          p.addEventListener('click',function(){
+            selDests[nom]=!selDests[nom];if(!selDests[nom])delete selDests[nom];
+            p.classList.toggle('on',!!selDests[nom]);
+            if(cap)cap.innerHTML=selDests[nom]?('<b>'+nom+'</b>'):capDefault;
+          });
+          paths.push(p);svg.appendChild(p);
+        });
+        el.appendChild(svg);
+        resetDest=function(){paths.forEach(function(p){p.classList.remove('on');});if(cap)cap.innerHTML=capDefault;};
+      })
+      .catch(function(){fallback();});
   }
   buildChips(document.getElementById('jrnyThemes'),THEMES,selThemes);
-  buildDestMap();
+  buildFranceMap();
+  buildChips(document.getElementById('jrnyDestExtra'),[{en:'Seychelles',fr:'Seychelles'}],selDests);
   buildChips(document.getElementById('jrnyTypes'),TYPES,selTypes);
 
   function picked(store){return Object.keys(store).filter(function(k){return store[k];});}

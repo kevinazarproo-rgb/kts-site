@@ -810,3 +810,11 @@ a.svc-col:hover .svc-more{text-decoration:underline}
 .fmap-globe{position:relative;height:clamp(300px,46vw,420px);border-radius:10px;overflow:hidden;
   background:radial-gradient(circle at 50% 38%,#163a66,#06101f);box-shadow:0 14px 34px rgba(5,62,124,.25)}
 .fmap-globe canvas{display:block}
+/* Journey — carte de France par régions (d3-geo, style luxe) */
+.fmap-france{width:100%;max-width:520px;margin:0 auto;min-height:60px}
+.fmap-france svg{width:100%;height:auto;display:block;background:transparent}
+.fr-region{fill:#f8f8f8;stroke:#1a2942;stroke-width:.5;cursor:pointer;transition:fill .2s ease}
+.fr-region:hover{fill:#c9a227}
+.fr-region.on{fill:#c9a227}
+.fmap-cap{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:.92rem;color:var(--muted);text-align:center;margin:.9rem 0 0;letter-spacing:.01em}
+.fmap-cap b{font-style:normal;color:#c9a227;letter-spacing:.04em}

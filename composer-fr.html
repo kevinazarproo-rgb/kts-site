@@ -68,10 +68,9 @@
         <form class="jrny-form" id="jrnyForm" action="https://formsubmit.co/groups@ktstravel.com" method="POST">
           <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0">
           <label class="jrny-label">Destinations</label>
-          <div class="fmap">
-            <div class="fmap-list" id="jrnyDestList"></div>
-            <div class="fmap-globe" id="jrnyGlobe"></div>
-          </div>
+          <div class="fmap-france" id="jrnyFrance"></div>
+          <p class="fmap-cap" id="jrnyFranceCap"></p>
+          <div class="chip-row" id="jrnyDestExtra" style="margin-top:.9rem"></div>
           <label class="jrny-label">Type de voyage</label>
           <div class="chip-row" id="jrnyTypes"></div>
           <label class="jrny-label">Ce qui vous attire</label>
@@ -198,7 +197,7 @@
 </div>
 
 <script src="assets/site.js"></script>
-<script src="https://unpkg.com/globe.gl"></script>
+<script src="https://unpkg.com/d3-geo@3"></script>
 <script src="assets/journey.js"></script>
 </body>
 </html>

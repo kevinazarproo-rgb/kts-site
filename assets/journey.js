@@ -88,21 +88,42 @@
       });
       resetDest=function(){el.querySelectorAll('.chip.on').forEach(function(c){c.classList.remove('on');});};
     }
-    if(!(window.d3&&d3.geoConicConformal&&d3.geoPath)){fallback();return;}
-    fetch('https://cdn.jsdelivr.net/gh/gregoiredavid/france-geojson@master/regions-version-simplifiee.geojson')
+    // Projection Lambert conique conforme (geoConicConformal) — JS pur, sans librairie
+    var D2R=Math.PI/180, f1=44*D2R, f2=49*D2R, f0=46.5*D2R, l0=3*D2R;
+    var n=Math.log(Math.cos(f1)/Math.cos(f2))/Math.log(Math.tan(Math.PI/4+f2/2)/Math.tan(Math.PI/4+f1/2));
+    var F=Math.cos(f1)*Math.pow(Math.tan(Math.PI/4+f1/2),n)/n;
+    var rho0=F/Math.pow(Math.tan(Math.PI/4+f0/2),n);
+    function proj(lon,lat){
+      var lr=lon*D2R, pr=lat*D2R, rho=F/Math.pow(Math.tan(Math.PI/4+pr/2),n);
+      return [rho*Math.sin(n*(lr-l0)), rho0-rho*Math.cos(n*(lr-l0))];
+    }
+    function eachRing(geom,cb){
+      if(!geom)return;
+      if(geom.type==='Polygon')geom.coordinates.forEach(cb);
+      else if(geom.type==='MultiPolygon')geom.coordinates.forEach(function(poly){poly.forEach(cb);});
+    }
+    fetch('assets/france-regions.geojson')
       .then(function(r){return r.json();})
       .then(function(geo){
-        var W=520,H=500,NS='http://www.w3.org/2000/svg';
-        var proj=d3.geoConicConformal().rotate([-3,0]).center([0,46.5]).parallels([44,49]);
-        proj.fitExtent([[8,8],[W-8,H-8]],geo);
-        var path=d3.geoPath().projection(proj);
+        var minX=1/0,minY=1/0,maxX=-1/0,maxY=-1/0;
+        geo.features.forEach(function(f){eachRing(f.geometry,function(ring){ring.forEach(function(pt){
+          var p=proj(pt[0],pt[1]);
+          if(p[0]<minX)minX=p[0];if(p[0]>maxX)maxX=p[0];if(p[1]<minY)minY=p[1];if(p[1]>maxY)maxY=p[1];
+        });});});
+        var W=520,H=500,pad=10;
+        var s=Math.min((W-2*pad)/(maxX-minX),(H-2*pad)/(maxY-minY));
+        var ox=pad+(W-2*pad-(maxX-minX)*s)/2, oy=pad+(H-2*pad-(maxY-minY)*s)/2;
+        function sx(x){return ox+(x-minX)*s;}
+        function sy(y){return oy+(maxY-y)*s;}
+        function geomD(geom){var d='';eachRing(geom,function(ring){ring.forEach(function(pt,i){var p=proj(pt[0],pt[1]);d+=(i?'L':'M')+sx(p[0]).toFixed(1)+' '+sy(p[1]).toFixed(1);});d+='Z';});return d;}
+        var NS='http://www.w3.org/2000/svg';
         var svg=document.createElementNS(NS,'svg');
         svg.setAttribute('viewBox','0 0 '+W+' '+H);svg.setAttribute('role','img');
         svg.setAttribute('aria-label',FR?'Carte des régions de France':'Map of French regions');
         var paths=[];
         geo.features.forEach(function(f){
           var p=document.createElementNS(NS,'path');
-          p.setAttribute('d',path(f));p.setAttribute('class','fr-region');
+          p.setAttribute('d',geomD(f.geometry));p.setAttribute('class','fr-region');
           var nom=(f.properties&&(f.properties.nom||f.properties.name))||'';
           p.addEventListener('click',function(){
             selDests[nom]=!selDests[nom];if(!selDests[nom])delete selDests[nom];

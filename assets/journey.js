@@ -27,7 +27,16 @@
     {id:'art',en:'Art & gardens',fr:'Art & jardins'},
     {id:'history',en:'History',fr:'Histoire'},
     {id:'vip',en:'VIP & luxury',fr:'VIP & luxe'},
-    {id:'wellness',en:'Wellness',fr:'Bien-être'}
+    {id:'wellness',en:'Wellness & spa',fr:'Bien-être & spa'},
+    {id:'gastro2',en:'Fine dining',fr:'Tables étoilées'},
+    {id:'sailing',en:'Sailing & boats',fr:'Voile & bateau'},
+    {id:'golf',en:'Golf',fr:'Golf'},
+    {id:'adventure',en:'Sport & adventure',fr:'Sport & aventure'},
+    {id:'shopping',en:'Shopping & fashion',fr:'Shopping & mode'},
+    {id:'nightlife',en:'Nightlife',fr:'Vie nocturne'},
+    {id:'photo',en:'Photography',fr:'Photographie'},
+    {id:'festivals',en:'Festivals & events',fr:'Festivals & événements'},
+    {id:'local',en:'Local life & markets',fr:'Vie locale & marchés'}
   ];
   var DESTS=[
     {en:'Paris',fr:'Paris'},{en:'French Riviera',fr:"Côte d'Azur"},{en:'Provence',fr:'Provence'},

@@ -682,3 +682,13 @@ a.svc-col:hover .svc-more{text-decoration:underline}
 .cform-status{margin-top:1rem;padding:.85rem 1.1rem;border-radius:6px;font-family:var(--sans);font-size:.92rem;line-height:1.45;color:#fff;background:rgba(255,255,255,.12)}
 .cform-status.ok{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);color:#fff}
 .cform-status.err{background:rgba(190,40,40,.92);color:#fff}
+.cookie-banner{position:fixed;left:0;right:0;bottom:0;z-index:200;background:var(--ink);color:#fff;display:flex;gap:1.4rem;align-items:center;justify-content:center;flex-wrap:wrap;padding:1rem clamp(1rem,4vw,2.5rem);box-shadow:0 -8px 30px rgba(0,0,0,.18)}
+.cookie-banner p{margin:0;font-family:var(--sans);font-weight:300;font-size:.9rem;max-width:640px;line-height:1.5}
+.cookie-banner a{color:#fff;text-decoration:underline}
+.cookie-actions{display:flex;gap:.7rem;flex-shrink:0}
+.cookie-banner button{font-family:var(--sans);font-weight:400;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;padding:.7rem 1.5rem;border-radius:30px;cursor:pointer;border:1px solid rgba(255,255,255,.5);transition:all .3s var(--ease)}
+.cookie-refuse{background:none;color:#fff}
+.cookie-refuse:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.cookie-accept{background:#fff;color:var(--ink);border-color:#fff}
+.cookie-accept:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+@media(max-width:600px){.cookie-banner{flex-direction:column;gap:.85rem;text-align:center}}

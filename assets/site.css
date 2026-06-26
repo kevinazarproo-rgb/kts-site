@@ -742,3 +742,15 @@ a.svc-col:hover .svc-more{text-decoration:underline}
 .jrny-form input,.jrny-form textarea{font-family:var(--sans);font-weight:300;font-size:1rem;color:var(--ink);background:var(--paper-2);border:1px solid var(--line);border-radius:6px;padding:.85rem .9rem}
 .jrny-form input:focus,.jrny-form textarea:focus{outline:none;border-color:var(--accent)}
 .jrny-form textarea{resize:vertical;min-height:90px}
+/* Compose your journey — plus de couleur / relief */
+.jrny-sec{background:var(--paper-2)}
+.jrny-card{box-shadow:0 12px 34px rgba(5,62,124,.06)}
+#jrnyPrefs{border-top:3px solid var(--accent)}
+.jrny-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-bottom:1.8rem}
+@media(max-width:760px){.jrny-steps{grid-template-columns:1fr}}
+.jrny-step{display:flex;gap:.9rem;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:8px;padding:1.1rem 1.2rem;box-shadow:0 10px 28px rgba(5,62,124,.05)}
+.jrny-step .n{flex:none;width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;font-family:var(--serif);font-size:1.15rem;display:flex;align-items:center;justify-content:center}
+.jrny-step h4{font-family:var(--sans);font-weight:500;font-size:.92rem;letter-spacing:.02em;margin:0 0 .2rem;color:var(--ink)}
+.jrny-step p{font-size:.83rem;color:var(--muted);margin:0;line-height:1.45}
+.jrny-card>h3{position:relative;padding-bottom:.6rem}
+.jrny-card>h3::after{content:"";position:absolute;left:0;bottom:0;width:38px;height:2px;background:var(--accent)}

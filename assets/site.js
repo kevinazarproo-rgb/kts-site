@@ -63,7 +63,7 @@
   }
 
   /* ===== Cookies / Google Analytics (consentement RGPD) ===== */
-  var GA_ID='G-XXXXXXXXXX';                 /* <-- remplacer par l'identifiant GA4 réel */
+  var GA_ID='G-SEWDZPZHZH';                 /* identifiant GA4 KTS */
   var CONFIGURED=GA_ID.indexOf('XXXX')===-1;
   var CKEY='kts-consent';
   var isFr=(document.documentElement.lang||'').toLowerCase().indexOf('fr')===0;

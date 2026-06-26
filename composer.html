@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Compose your journey — KTS Travel</title>
-<meta name="description" content="Tell us what you dream of and let KTS suggest tailor-made experiences across France and beyond — then send your selection to our travel designers.">
+<meta name="description" content="Tell us about your trip and our travel designers craft a tailor-made proposal — a few words are all we need.">
 <link rel="canonical" href="https://kevinazarproo-rgb.github.io/kts-site/composer.html">
 <link rel="alternate" hreflang="fr" href="https://kevinazarproo-rgb.github.io/kts-site/composer-fr.html">
 <link rel="alternate" hreflang="en" href="https://kevinazarproo-rgb.github.io/kts-site/composer.html">
@@ -14,13 +14,13 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="fr_FR">
 <meta property="og:title" content="Compose your journey — KTS Travel">
-<meta property="og:description" content="Tell us what you dream of and let KTS suggest tailor-made experiences across France — then send your selection to our travel designers.">
+<meta property="og:description" content="Tell us about your trip and our travel designers craft a tailor-made proposal — a few words are all we need.">
 <meta property="og:url" content="https://kevinazarproo-rgb.github.io/kts-site/composer.html">
 <meta property="og:image" content="https://images.pexels.com/photos/32469438/pexels-photo-32469438.jpeg?auto=compress&cs=tinysrgb&w=1200">
 <meta property="og:image:alt" content="Compose your journey — KTS Travel">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Compose your journey — KTS Travel">
-<meta name="twitter:description" content="Tell us what you dream of and let KTS suggest tailor-made experiences across France.">
+<meta name="twitter:description" content="Tell us about your trip and our travel designers craft a tailor-made proposal — a few words are all we need.">
 <meta name="twitter:image" content="https://images.pexels.com/photos/32469438/pexels-photo-32469438.jpeg?auto=compress&cs=tinysrgb&w=1200">
 <link rel="icon" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,38 +54,25 @@
   <div class="wrap"><nav class="breadcrumb"><a href="index.html">Home</a> <span class="sep">&rsaquo;</span> Compose your journey</nav></div>
 
   <section class="jrny-sec">
-    <div class="wrap" style="max-width:1040px">
+    <div class="wrap" style="max-width:820px">
 
       <div class="jrny-steps reveal">
-        <div class="jrny-step"><span class="n">1</span><div><h4>Tell us your wishes</h4><p>Pick destinations and themes, or describe your trip in your own words.</p></div></div>
-        <div class="jrny-step"><span class="n">2</span><div><h4>Get tailored ideas</h4><p>We suggest real KTS experiences that match what you love.</p></div></div>
-        <div class="jrny-step"><span class="n">3</span><div><h4>Send your selection</h4><p>Our travel designers turn it into a bespoke proposal.</p></div></div>
-      </div>
-
-      <div class="jrny-card reveal" id="jrnyPrefs">
-        <h3>Tell us about your dream trip</h3>
-        <p class="sub">Pick what you love — or describe it in your own words — and we'll suggest matching experiences.</p>
-        <label class="jrny-label">Destinations</label>
-        <div class="chip-row" id="jrnyDests"></div>
-        <label class="jrny-label">What you're into</label>
-        <div class="chip-row" id="jrnyThemes"></div>
-        <label class="jrny-label" for="jrnyText">In your own words (optional)</label>
-        <textarea class="jrny-ta" id="jrnyText" placeholder="e.g. 5 days for two, fine wine and great restaurants, somewhere in the south…"></textarea>
-        <div><button type="button" class="jrny-go" id="jrnyGo">See suggestions</button></div>
-      </div>
-
-      <div id="jrnyResults" hidden>
-        <p class="jrny-intro" id="jrnyIntro"></p>
-        <div class="jrny-grid" id="jrnyGrid"></div>
+        <div class="jrny-step"><span class="n">1</span><div><h4>Tell us your wishes</h4><p>Destinations, style and a few words about your trip.</p></div></div>
+        <div class="jrny-step"><span class="n">2</span><div><h4>We craft a proposal</h4><p>A travel designer builds a tailor-made plan.</p></div></div>
+        <div class="jrny-step"><span class="n">3</span><div><h4>We refine it together</h4><p>We adjust every detail until it is perfect.</p></div></div>
       </div>
 
       <div class="jrny-card reveal">
-        <h3>Your journey <span class="jrny-count" id="jrnyCount"></span></h3>
-        <p class="sub">Review your selection, add a few details and send it to our travel designers.</p>
-        <div class="jrny-sel-list" id="jrnySelList"></div>
+        <h3>Tell us about your trip</h3>
+        <p class="sub">Share your wishes &mdash; our travel designers reply within one business day.</p>
         <form class="jrny-form" id="jrnyForm" action="https://formsubmit.co/groups@ktstravel.com" method="POST">
           <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0">
-          <textarea id="jrnySelected" name="selected" hidden></textarea>
+          <label class="jrny-label">Destinations (optional)</label>
+          <div class="chip-row" id="jrnyDests"></div>
+          <label class="jrny-label">What you&rsquo;re into (optional)</label>
+          <div class="chip-row" id="jrnyThemes"></div>
+          <label class="jrny-label" for="jf-text">Describe your ideal trip</label>
+          <textarea class="jrny-ta" id="jf-text" placeholder="e.g. 5 days for two in September, fine wine and great restaurants in the south&hellip;"></textarea>
           <div class="row">
             <div class="field"><label for="jf-first">First name</label><input id="jf-first" type="text" placeholder="e.g. John" required></div>
             <div class="field"><label for="jf-last">Last name</label><input id="jf-last" type="text" placeholder="e.g. Smith" required></div>
@@ -98,8 +85,7 @@
             <div class="field"><label for="jf-dates">Approximate dates</label><input id="jf-dates" type="text" placeholder="e.g. mid-September, 1 week"></div>
             <div class="field"><label for="jf-people">Number of travellers</label><input id="jf-people" type="text" placeholder="e.g. 2 adults"></div>
           </div>
-          <div class="field"><label for="jf-msg">Anything else?</label><textarea id="jf-msg" placeholder="Tell us more about your project…"></textarea></div>
-          <button type="submit" class="jrny-go">Send my journey</button>
+          <button type="submit" class="jrny-go">Send my request</button>
           <div class="cform-status" id="jrnyStatus" hidden></div>
           <p class="sub" style="margin-top:1rem">By sending this you agree to be contacted by our team. We never share your details.</p>
         </form>
